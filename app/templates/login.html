@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+<body>
+
+    <h1>Login Page</h1>
+    <form method="POST">
+        {% csrf_token %}
+            {%for field in form%}
+            {{field}}
+            {%endfor%}
+        <button type="submit" class="button">login</button>
+        <a href="{%url 'register'%}" class="link" style="font-size:12px;">Don't have an account? Register Here.</a>
+    </form>
+
+</body>
+{%endblock content%}

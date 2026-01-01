@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+
+
+<body>  
+    <main class="content">
+        {% include 'navbar.html' %} 
+        {%if pets%}
+            {%for pet in pets%}
+            <div>
+                <ul>
+                    <li>Name: {{pet.name}}</li>
+                    <li>Breed: {{pet.breed}}</li> 
+                    <li>Age: {{pet.age}}</li>
+                    
+                <hr></hr>
+
+                    <li>Notes: {{pet.notes}}</li>
+
+                <a href="{% url 'edit-pet' pet.id %}">Edit</a>
+                <form method="POST" action="{% url 'edit-pet' %}">
+                {% csrf_token %}
+                {% for field in form %}
+                    {{field}}
+                {% endfor %}
+                <button type="submit" class="button">Save Changes</button>
+            </form>
+                </ul>
+            <hr></hr>
+            </div>
+            {%endfor%}
+        {%else%}
+        </p>No pets yet.</p>
+        {%endif%}
+
+        <div>
+            <form method="POST" action="{% url 'add-pet' %}">
+                {% csrf_token %}
+                {% for field in form %}
+                    {{field}}
+                {% endfor %}
+                <button type="submit" class="button">Save Pet</button>
+            </form>
+
+            <a href="{% url 'add-pet' %}" class="button">Add Pet</a>
+        </div>
+    </main> 
+</body>
+{%endblock content%}
