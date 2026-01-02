@@ -64,3 +64,22 @@ class VetVisitForm(forms.ModelForm):
                 'placeholder': 'Description',
             }),
         }
+
+
+class VaccinationForm(forms.ModelForm):
+    class Meta: 
+        model = Vaccination
+        fields = ['pet', 'vaccine_name', 'date_administered', 'next_due_date']
+        widgets = {
+            'vaccine_name:' : forms.TextInput(attrs={
+                'placeholder': 'Vaccine Name'
+            }),
+            'date_administered': forms.DateInput(attrs={
+                'type': 'date'
+            }),
+            'next_due_date': forms.DateInput(attrs={
+                'type': 'date'
+            })
+        }
+
+

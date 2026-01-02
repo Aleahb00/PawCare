@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Pet Vaccinations</h1>
+                <a href="javascript:history.back()">Go Back</a>
+
+            
+            {% if vaccinations %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Pet Name</th>
+                        <th>Vaccination</th>
+                        <th>Date</th>
+                        <th>Next Due</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vaccination in vaccinations %}
+                    <tr>
+                        <td>{{ vaccination.pet.name }}</td>
+                        <td>{{ vaccination.vaccine_name }}</td>
+                        <td>{{ vaccination.date_administered }}</td>
+                        <td>{{ vaccination.next_due_date }}</td>
+                        <td>
+                            <a href="{% url 'edit-vaccination' vaccination.id %}" >Edit</a>
+                            <a href="{% url 'delete-vaccination' vaccination.id %}">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No vaccinations recorded yet.</p>
+            {% endif %}
+        </div>
+
+        <form method="POST" action="{% url 'add-vaccination'%}">
+        {% csrf_token %}
+        {% for field in form %}
+            {{field.label_tag}}
+            {{field}}
+        {% endfor %}
+        <button type="submit" class="button">Add Visit</button>
+    </form>
+
+
+</body>
+{% endblock %}
