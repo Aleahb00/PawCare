@@ -17,8 +17,6 @@ def landing_view(request:HttpRequest)->HttpResponse:
     return render(request, 'landing.html')
 
 
-
-
 def register_view(request:HttpRequest)->HttpResponse:
     if request.method == "POST":
         form = RegistrationForm(request.POST)
@@ -45,7 +43,6 @@ def login_view(request:HttpRequest)->HttpResponse:
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form':form})
-
 
 
 
@@ -169,8 +166,60 @@ def delete_vaccination_view(request:HttpRequest,vaccination_id:int)-> HttpRespon
 
 
 
+def community_view(request:HttpRequest)->HttpResponse:
+    posts = CommunityPost.objects.all().order_by('-created_at')
+    context = {
+        'posts': posts,
+    }
+    return render(request, 'community.html', context)
 
 
+def create_post_view(request:HttpRequest)->HttpResponse:
+    if request.method == 'POST':
+        form = CommunityPostForm(request.POST)
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.author = request.user
+            new_post.save()
+            return redirect('community')
+    else:
+        form = CommunityPostForm()
+    return render(request, 'community.html', {'form': form})
+
+
+def edit_post_view(request:HttpRequest, post_id:int)->HttpResponse:
+    post = get_object_or_404(CommunityPost, id=post_id)
+    if not post.author == request.user:
+        return HttpResponseForbidden()
+    form = CommunityPostForm(request.POST or None, instance=post)
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        return redirect("community")
+    return render(request, "edit_post.html", {"form": form})
+
+
+def delete_post_view(request:HttpRequest, post_id:int)->HttpResponse:
+    CommunityPost.objects.filter(id=post_id).delete()
+    return redirect('community')
+
+
+def post_detail_view(request:HttpRequest, post_id:int)->HttpResponse:
+    post = get_object_or_404(CommunityPost, id=post_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.author = request.user
+            new_comment.post = post
+            new_comment.save()
+            return redirect('community')
+    else:
+        form = CommentForm() 
+    return render(request, 'postDetails.html', {'post': post, 'form': form})
+
+
+def comment_view(request:HttpRequest, post_id:int)->HttpResponse:
+    pass
 
 
 

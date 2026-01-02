@@ -83,3 +83,27 @@ class VaccinationForm(forms.ModelForm):
         }
 
 
+class CommunityPostForm(forms.ModelForm):
+    class Meta:
+        model = CommunityPost
+        fields = ['title', 'content']
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'placeholder': 'Post Title'
+            }),
+            'content': forms.Textarea(attrs={
+                'placeholder': 'Write your post here...'
+            }),
+        }
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={
+                'placeholder': 'write your comment here...'
+            })
+        }
+

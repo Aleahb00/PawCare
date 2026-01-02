@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+
+
+<body>  
+    <main class="content">
+        {% include 'navbar.html' %} 
+
+
+                <form method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    {{field}}
+                {% endfor %}
+                <button type="submit" class="button">Save Changes</button>
+            </form>
+
+
+
+
+        </div>
+    </main> 
+</body>
+{%endblock content%}

@@ -17,8 +17,10 @@
                     <li>Age: {{pet.age}}</li>
                     
                 <hr></hr>
-
-                    <li>Notes: {{pet.notes}}</li>
+                    <li>Allergies: {{pet.allergies}}</li>
+                    <li>Personality: {{pet.personality}}</li>
+                    <li>Daily Routine: {{pet.daily_routine}}</li>
+                    <li>Care instructions: {{pet.care_instructions}}</li>
                 </ul>
                 <a href="{% url 'edit-pet' pet.id %}">Edit</a>
                 <a href="{% url 'delete_pet' pet.id %}">Delete</a>
@@ -43,6 +45,9 @@
 
         <a href='{% url 'vet-visits' %}'> Vet Visits </a>
         <a href='{% url 'vaccinations' %}'> Vaccinations</a>
+        <a href='{% url 'community' %}'> Community</a>
+
+
 
 </body>
 {%endblock content%}

@@ -1,0 +1,39 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+<body>
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+    <hr>
+
+    <h2>Comments</h2>
+
+    {{post.comment}}
+    {{post.new_comment}}
+    {{post.new_comment.content}}
+
+
+    <div id="comments">
+        {% for comment in post.comments.all %}
+            <div class="comment">
+                <p><strong>{{ comment.author.username }}:</strong> {{ comment.content }}</p>
+            </div>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+    </div>
+
+    <h3>Leave a Comment</h3>
+    <form method="POST" action="{% url 'post-details' post.id %}">
+        {% csrf_token %}
+        {% for field in form%}
+        {{field.label_tag}}
+        {{ field }}
+        {%endfor%}
+        <button type='submit'>Submit</button>
+    </form>
+
+
+</body>
+
+{%endblock content%}

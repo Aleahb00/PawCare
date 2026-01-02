@@ -5,12 +5,12 @@
         {% include 'navbar.html' %}
         <h1>Landing page</h1>
         {%if user.is_authenticated%}
-            <h2> Logged in as <i>{{user.username}}</i></h2>
+            <h2 style="font-size:42px; color:red;"> Logged in as <i>{{user.username}}</i></h2>
             {%else%}
-            <h2> Not logged in </h2>
+            <h2 style="font-size:42px; color:red;"> Not logged in </h2>
         {%endif%}
 
-        
+
         <h1>Keep Your Pets Happy & Healthy</h1>
         <p>Track vet visits, manage vaccinations, and connect with a community of pet lovers. 
             Everything you need to give your furry friends the best care.</p>

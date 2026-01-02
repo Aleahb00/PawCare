@@ -23,9 +23,13 @@ urlpatterns = [
     path('vaccinations/add-vaccination/', create_vaccination_view, name='add-vaccination'),
     path('vaccinations/edit-vaccination/<int:vaccination_id>/', edit_vaccination_view, name='edit-vaccination'),
     path('vaccinations/delete-vaccination/<int:vaccination_id>/', delete_vaccination_view, name='delete-vaccination'),
+    
+    path('community/', community_view, name='community'),
+    path('community/add-post/', create_post_view, name='create-post'),
+    path('community/edit-post/<int:post_id>', edit_post_view, name='edit-post'),
+    path('community/delete-post/<int:post_id>', delete_post_view, name='delete-post'),
+    path('community/post-details/<int:post_id>/', post_detail_view, name='post-details')
 
-
-
-
+    
     # path('search/', search_view, name='search'),
 ]
