@@ -28,8 +28,13 @@ urlpatterns = [
     path('community/add-post/', create_post_view, name='create-post'),
     path('community/edit-post/<int:post_id>', edit_post_view, name='edit-post'),
     path('community/delete-post/<int:post_id>', delete_post_view, name='delete-post'),
-    path('community/post-details/<int:post_id>/', post_detail_view, name='post-details')
-
     
+    path('community/post-details/<int:post_id>/', post_detail_view, name='post-details'),
+    
+    path('community/post-details/delete-comment/<int:comment_id>/', delete_comment_view, name='delete-comment'),
+
+
+
+
     # path('search/', search_view, name='search'),
 ]

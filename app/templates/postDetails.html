@@ -5,18 +5,18 @@
     <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p>
     <hr>
+            <a href="javascript:history.back()">Go Back</a>
 
     <h2>Comments</h2>
-
-    {{post.comment}}
-    {{post.new_comment}}
-    {{post.new_comment.content}}
 
 
     <div id="comments">
         {% for comment in post.comments.all %}
-            <div class="comment">
+            <div style="border:1px solid black; margin-bottom:20vh;">
                 <p><strong>{{ comment.author.username }}:</strong> {{ comment.content }}</p>
+                {%if user == comment.author or comment.post.author%}
+                <a href='{% url 'delete-comment' comment.id %}'>Delete Comment</a>
+                {%endif%}
             </div>
         {% empty %}
             <p>No comments yet.</p>

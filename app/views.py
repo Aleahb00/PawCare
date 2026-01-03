@@ -218,8 +218,9 @@ def post_detail_view(request:HttpRequest, post_id:int)->HttpResponse:
     return render(request, 'postDetails.html', {'post': post, 'form': form})
 
 
-def comment_view(request:HttpRequest, post_id:int)->HttpResponse:
-    pass
+def delete_comment_view(request:HttpRequest, comment_id:int)->HttpResponse:
+    Comment.objects.filter(id=comment_id).delete()
+    return redirect('community')
 
 
 
