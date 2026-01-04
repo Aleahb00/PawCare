@@ -1,14 +1,14 @@
-{% extends 'base.html' %}
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
 
-{% block content %}
-<body>
+{% include 'navbar.html' %}
+    <a href="javascript:history.back()">Go Back</a>
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-8">
             <h1>Pet Vaccinations</h1>
-                <a href="javascript:history.back()">Go Back</a>
-
-            
             {% if vaccinations %}
             <table class="table table-striped">
                 <thead>
@@ -22,33 +22,59 @@
                 </thead>
                 <tbody>
                     {% for vaccination in vaccinations %}
-                    <tr>
-                        <td>{{ vaccination.pet.name }}</td>
-                        <td>{{ vaccination.vaccine_name }}</td>
-                        <td>{{ vaccination.date_administered }}</td>
-                        <td>{{ vaccination.next_due_date }}</td>
-                        <td>
-                            <a href="{% url 'edit-vaccination' vaccination.id %}" >Edit</a>
-                            <a href="{% url 'delete-vaccination' vaccination.id %}">Delete</a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{ vaccination.pet.name }}</td>
+                            <td>{{ vaccination.vaccine_name }}</td>
+                            <td>{{ vaccination.date_administered }}</td>
+                            <td>{{ vaccination.next_due_date }}</td>
+                            <td>
+                                <a href="{% url 'edit-vaccination' vaccination.id %}" >Edit</a>
+                                <a href="{% url 'delete-vaccination' vaccination.id %}">Delete</a>
+                            </td>
+                        </tr>
                     {% endfor %}
                 </tbody>
             </table>
             {% else %}
-            <p>No vaccinations recorded yet.</p>
+                <p>No vaccinations recorded yet.</p>
             {% endif %}
         </div>
-
-        <form method="POST" action="{% url 'add-vaccination'%}">
-        {% csrf_token %}
-        {% for field in form %}
-            {{field.label_tag}}
-            {{field}}
-        {% endfor %}
-        <button type="submit" class="button">Add Visit</button>
-    </form>
+    </div>
+<div>
 
 
-</body>
+
+
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addVaccinationModal" action="{% url 'vaccinations' %}">Add Vaccination</button>
+        <div class="modal fade" id="addVaccinationModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <form method="POST" action="{% url 'pets' %}">
+                    {% csrf_token %}
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add Vaccination</h5>
+                            
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            {% for field in form %}
+                                {{field}}
+                            {% endfor %}
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-success">Save Vaccination</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
 {% endblock %}

@@ -1,11 +1,15 @@
 {%extends 'base.html'%}
 {%load static%}
 {%block content%}
-<body>
 
+{% include 'navbar.html' %} 
+    <a href="javascript:history.back()">Go Back</a>
+
+
+    <h2>Hello, {{user.first_name}}!</h2>
 
     {%if visit%}
-            {%for v in visit%}
+        {%for v in visit%}
             <div>
                 <ul>
                     <li>Name: {{v.pet.name}}</li>
@@ -13,31 +17,49 @@
                     <li>Date: {{v.visit_date}}</li>
                     <a href='{% url 'edit-visit' v.id %}'>Edit</a>
                     <a href='{% url 'delete-visit' v.id %}'>Delete Visit</a>
-                    
-                <hr></hr>
+    
                 </ul>
-                {% comment %} <a href="{% url 'edit-pet' pet.id %}">Edit</a>
-                <a href="{% url 'delete_pet' pet.id %}">Delete</a> {% endcomment %}
-            <hr></hr>
+
+                <hr></hr>
+                <hr></hr>
             </div>
-            {%endfor%}
-        {%else%}
+        {%endfor%}
+    {%else%}
         </p>No visits yet.</p>
-        {%endif%}
-
-            <a href="{% url 'add-visit' %}" class="button">Add Visit</a>
+    {%endif%}
 
 
-        <form method="POST">
-        {% csrf_token %}
-        {% for field in form %}
-            {{field}}
-        {% endfor %}
-        <button type="submit" class="button">Add Visit</button>
-    </form>
 
-    <a href="javascript:history.back()">Go Back</a>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addVisitModal" action="{% url 'vet-visits' %}">Add Visit</button>
+    <div class="modal fade" id="addVisitModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <form method="POST" action="{% url 'vet-visits' %}">
+                {% csrf_token %}
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Visit</h5>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        {% for field in form %}
+                            {{field}}
+                        {% endfor %}
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Save Visit</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
 </body>
 {%endblock content%}
+

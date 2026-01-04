@@ -48,13 +48,19 @@ def login_view(request:HttpRequest)->HttpResponse:
 
 def pets_view(request:HttpRequest)->HttpResponse:
     pets = Pet.objects.filter(owner=request.user)
-    context = {
-        'pets': pets,
-    }
-    return render(request, 'pets.html', context)
+    if request.method == 'POST':
+        form = PetForm(request.POST)
+        if form.is_valid():
+            new_pet = form.save(commit=False)
+            new_pet.owner = request.user
+            new_pet.save()
+            return redirect('pets')
+    else:
+        form = PetForm()
+    return render(request, 'pets.html', {'pets':pets, 'form':form})
 
 
-def add_pet_view(request:HttpRequest)->HttpResponse:
+# def add_pet_view(request:HttpRequest)->HttpResponse:
     if request.method == 'POST':
         form = PetForm(request.POST)
         if form.is_valid():
@@ -85,15 +91,23 @@ def delete_pet_view(request: HttpRequest, pet_id) -> HttpResponse:
 
 
 
-def vet_visits_view(request:HttpRequest, )->HttpResponse:
+def vet_visits_view(request:HttpRequest)->HttpResponse:
     visit = VetVisit.objects.filter(pet__owner=request.user)
-    context = {
-        'visit': visit,
-    }
-    return render(request, 'vetVisits.html', context)
+    if request.method == 'POST':
+        form = VetVisitForm(request.POST)
+        if form.is_valid():
+            new_visit = form.save(commit=False)
+            new_visit.pet = form.cleaned_data['pet']
+            new_visit.save()
+            return redirect('vet-visits')
+    else:
+        form = VetVisitForm()
+    form.fields["pet"].queryset = Pet.objects.filter(
+        owner=request.user)
+    return render(request, 'vetVisits.html', {'visit': visit,'form':form })
 
 
-def create_vet_visit_view(request:HttpRequest)->HttpResponse:
+# def create_vet_visit_view(request:HttpRequest)->HttpResponse:
     if request.method == 'POST':
         form = VetVisitForm(request.POST)
         if form.is_valid():
@@ -128,13 +142,21 @@ def delete_vet_visit_view(request: HttpRequest, visit_id) -> HttpResponse:
 
 def vaccinations_view(request:HttpRequest)-> HttpResponse:
     vaccinations = Vaccination.objects.filter(pet__owner=request.user)
-    context = {
-        'vaccinations': vaccinations,
-    }
-    return render(request, 'vaccinations.html', context)
+    if request.method == 'POST':
+        form = VaccinationForm(request.POST)
+        if form.is_valid():
+            new_vaccine = form.save(commit=False)
+            new_vaccine.pet = form.cleaned_data['pet']
+            new_vaccine.save()
+            return redirect('vaccinations')
+    else:
+        form = VaccinationForm()
+    form.fields["pet"].queryset = Pet.objects.filter(
+        owner=request.user)
+    return render(request, 'vaccinations.html', {'vaccinations':vaccinations, 'form':form})
 
 
-def create_vaccination_view(request:HttpRequest)-> HttpResponse:
+# def create_vaccination_view(request:HttpRequest)-> HttpResponse:
     if request.method == 'POST':
         form = VaccinationForm(request.POST)
         if form.is_valid():
