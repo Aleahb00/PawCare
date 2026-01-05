@@ -331,6 +331,32 @@ hr {
     color:transparent;
 }
 
+.hero-subtitle {
+    max-width: 44ch;
+    color: #6b7280;
+    font-size: 1.05rem;
+    margin: 0 0 1.6rem 0;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.75rem;
+}
+
+.btn-lg {
+    padding: .85rem 1.35rem;
+    border-radius: .9rem;
+    font-size: 1rem;
+}
+
+.btn-xl {
+    padding: 1rem 1.6rem;
+    border-radius: 1rem;
+    
+}
+
 /* =========================
    Cards
    ========================= */

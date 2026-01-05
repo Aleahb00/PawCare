@@ -14,7 +14,7 @@
         <section class="hero">
             <div class="container hero-inner">
                 <div class="hero-left">
-                    <div class="hero-kicker"> ♡ Your pet’s health companion </div>
+                    <div class="hero-kicker"> ♡ Your pet's health companion </div>
 
                     <h1 class="hero-title">
                         Keep Your Pets <span class="text-gradient">Happy</span><br>
@@ -25,6 +25,29 @@
                     <p class="hero-subtitle">
                         Track vet visits, manage vaccinations, and connect with a community of pet lovers. Everything you need to give your furry friends the best care.
                     </p>
+
+                    <div class="hero-actions">
+                        <a class="btn btn-primary btn-lg" href="{% url 'register' %}">Get Started Free →</a>
+                        <a class="btn btn-outline-primary btn-lg" href="{% url 'community' %}">Explore Community</a>
+                    </div>
+
+                    <div class="hero-proof">
+                        <div class="avatar-stack">
+                            <span class="avatar">🐶</span>
+                            <span class="avatar">🐱</span>
+                            <span class="avatar">🐰</span>
+                            <span class="avatar">🐦</span>
+                        </div>
+                        <div class="proof-text"><strong>10,000+</strong> happy pet parents</div>
+                    </div>
+                </div>
+
+                <div class="hero-right">
+                    <div class="hero-right">
+                        <div class="hero-art">
+                        <img src="{% static 'images/heroimg.jpg' %}" alt="A dog and cat illustration">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
