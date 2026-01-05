@@ -132,3 +132,149 @@
                 <p>&copy; 2026 PawCare. All rights reserved.</p>
             </footer>
     </body> -->
+
+
+
+
+
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'landing' %}"><img src="{% static 'images/logo.png' %}" alt="Paw Icon" width="50" height="50">Paw Care</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'pets' %}">Pets</a>
+                    <a class="nav-link" href="{% url 'community' %}">Community</a>
+                    <a class="nav-link" href="{% url 'vet-visits' %}">Vet Visits</a>
+                    <a class="nav-link" href="{% url 'vaccinations' %}">Vaccinations</a>
+                    <a class="nav-link text-danger" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+.navbar.navbar-expand-lg.bg-body-tertiary {
+    background-color: white;
+}
+
+.navbar {
+    border-bottom: 1px solid var(--border);
+    padding: .75rem 0;
+}
+
+.navbar .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.navbar-brand {
+    font-weight: 900;
+    font-size: 1.25rem;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.nav-link {
+    color: var(--text);
+    text-decoration: none;
+    padding: .4rem .55rem;
+    border-radius: .5rem;
+    font-weight: 700;
+}
+
+.nav-link:hover {
+    background: rgba(0, 0, 0, .06);
+}
+
+.navbar-collapse {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-toggler {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 38px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .5rem;
+    background: transparent;
+    cursor: pointer;
+}
+
+.navbar-toggler-icon {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    position: relative;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+}
+
+.navbar-toggler-icon::before {
+    top: -6px;
+}
+
+.navbar-toggler-icon::after {
+    top: 6px;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-expand-lg .navbar-collapse {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar-expand-lg .navbar-collapse.show {
+        display: block;
+    }
+
+    .navbar .container-fluid {
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        padding-top: .5rem;
+    }
+
+    .nav-link {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-toggler {
+        display: none;
+    }
+}
