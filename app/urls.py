@@ -26,8 +26,8 @@ urlpatterns = [
     
     path('community/', community_view, name='community'),
     # path('community/add-post/', create_post_view, name='create-post'),
-    path('community/edit-post/<int:post_id>', edit_post_view, name='edit-post'),
-    path('community/delete-post/<int:post_id>', delete_post_view, name='delete-post'),
+    path('community/edit-post/<int:post_id>/', edit_post_view, name='edit-post'),
+    path('community/delete-post/<int:post_id>/', delete_post_view, name='delete-post'),
     
     path('community/post-details/<int:post_id>/', post_detail_view, name='post-details'),
     

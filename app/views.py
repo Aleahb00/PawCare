@@ -29,7 +29,6 @@ def register_view(request:HttpRequest)->HttpResponse:
         form = RegistrationForm()
     return render(request, 'register.html', {'form':form})
 
-
 def login_view(request:HttpRequest)->HttpResponse:
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -45,7 +44,7 @@ def login_view(request:HttpRequest)->HttpResponse:
     return render(request, 'login.html', {'form':form})
 
 
-
+@login_required
 def pets_view(request:HttpRequest)->HttpResponse:
     pets = Pet.objects.filter(owner=request.user)
     if request.method == 'POST':
@@ -72,7 +71,7 @@ def pets_view(request:HttpRequest)->HttpResponse:
         form = PetForm()
     return render(request, 'pets.html', {'form': form})
 
-
+@login_required
 def edit_pet_view(request:HttpRequest, pet_id:int)->HttpResponse:
     pet = get_object_or_404(Pet, id=pet_id)
     if not pet.owner == request.user:
@@ -83,14 +82,14 @@ def edit_pet_view(request:HttpRequest, pet_id:int)->HttpResponse:
         return redirect("pets")
     return render(request, "edit_pet.html", {"form": form})
 
-
+@login_required
 def delete_pet_view(request: HttpRequest, pet_id) -> HttpResponse:
     Pet.objects.filter(id=pet_id).delete()
     return redirect('pets')
 
 
 
-
+@login_required
 def vet_visits_view(request:HttpRequest)->HttpResponse:
     visit = VetVisit.objects.filter(pet__owner=request.user)
     if request.method == 'POST':
@@ -99,6 +98,7 @@ def vet_visits_view(request:HttpRequest)->HttpResponse:
             new_visit = form.save(commit=False)
             new_visit.pet = form.cleaned_data['pet']
             new_visit.save()
+            messages.success(request, 'Visit saved successfully!')
             return redirect('vet-visits')
     else:
         form = VetVisitForm()
@@ -106,22 +106,7 @@ def vet_visits_view(request:HttpRequest)->HttpResponse:
         owner=request.user)
     return render(request, 'vetVisits.html', {'visit': visit,'form':form })
 
-
-# def create_vet_visit_view(request:HttpRequest)->HttpResponse:
-    if request.method == 'POST':
-        form = VetVisitForm(request.POST)
-        if form.is_valid():
-            new_visit = form.save(commit=False)
-            new_visit.pet = form.cleaned_data['pet']
-            new_visit.save()
-            return redirect('pets')
-    else:
-        form = VetVisitForm()
-    form.fields["pet"].queryset = Pet.objects.filter(
-        owner=request.user)
-    return render(request, 'vetVisits.html', {'form': form})
-
-
+@login_required
 def edit_vet_visit_view(request:HttpRequest, visit_id:int)->HttpResponse:
     visit = get_object_or_404(VetVisit, id=visit_id)
     if not visit.pet.owner == request.user:
@@ -132,14 +117,14 @@ def edit_vet_visit_view(request:HttpRequest, visit_id:int)->HttpResponse:
         return redirect("vet-visits")
     return render(request, "edit_vetVisit.html", {"form": form})
 
-
+@login_required
 def delete_vet_visit_view(request: HttpRequest, visit_id) -> HttpResponse:
     VetVisit.objects.filter(id=visit_id).delete()
     return redirect('vet-visits')
 
 
 
-
+@login_required
 def vaccinations_view(request:HttpRequest)-> HttpResponse:
     vaccinations = Vaccination.objects.filter(pet__owner=request.user)
     if request.method == 'POST':
@@ -170,7 +155,7 @@ def vaccinations_view(request:HttpRequest)-> HttpResponse:
         owner=request.user)
     return render(request, 'vaccinations.html', {'form': form})
 
-
+@login_required
 def edit_vaccination_view(request:HttpRequest,vaccination_id:int)-> HttpResponse:
     vaccination = get_object_or_404(Vaccination, id=vaccination_id)
     if not vaccination.pet.owner == request.user:
@@ -181,13 +166,13 @@ def edit_vaccination_view(request:HttpRequest,vaccination_id:int)-> HttpResponse
         return redirect("vaccinations")
     return render(request, "edit_vaccination.html", {"form": form})
 
-
+@login_required
 def delete_vaccination_view(request:HttpRequest,vaccination_id:int)-> HttpResponse:
     Vaccination.objects.filter(id=vaccination_id).delete()
     return redirect('vaccinations')
 
 
-
+@login_required
 def community_view(request:HttpRequest)->HttpResponse:
     posts = CommunityPost.objects.all().order_by('-created_at')
     if request.method == 'POST':
@@ -201,7 +186,6 @@ def community_view(request:HttpRequest)->HttpResponse:
         form = CommunityPostForm()
     return render(request, 'community.html', {'posts':posts, 'form':form})
 
-
 # def create_post_view(request:HttpRequest)->HttpResponse:
     if request.method == 'POST':
         form = CommunityPostForm(request.POST)
@@ -214,7 +198,7 @@ def community_view(request:HttpRequest)->HttpResponse:
         form = CommunityPostForm()
     return render(request, 'community.html', {'form': form})
 
-
+@login_required
 def edit_post_view(request:HttpRequest, post_id:int)->HttpResponse:
     post = get_object_or_404(CommunityPost, id=post_id)
     if not post.author == request.user:
@@ -225,12 +209,13 @@ def edit_post_view(request:HttpRequest, post_id:int)->HttpResponse:
         return redirect("community")
     return render(request, "edit_post.html", {"form": form})
 
-
+@login_required
 def delete_post_view(request:HttpRequest, post_id:int)->HttpResponse:
     CommunityPost.objects.filter(id=post_id).delete()
     return redirect('community')
 
 
+@login_required
 def post_detail_view(request:HttpRequest, post_id:int)->HttpResponse:
     post = get_object_or_404(CommunityPost, id=post_id)
     if request.method == 'POST':
@@ -245,7 +230,7 @@ def post_detail_view(request:HttpRequest, post_id:int)->HttpResponse:
         form = CommentForm() 
     return render(request, 'postDetails.html', {'post': post, 'form': form})
 
-
+@login_required
 def delete_comment_view(request:HttpRequest, comment_id:int)->HttpResponse:
     Comment.objects.filter(id=comment_id).delete()
     return redirect('community')

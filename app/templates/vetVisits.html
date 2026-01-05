@@ -5,6 +5,13 @@
 {% include 'navbar.html' %} 
     <a href="javascript:history.back()">Go Back</a>
 
+        {% if messages %}
+        {% for message in messages %}
+            <script>
+                alert("{{ message }}");
+            </script>
+        {% endfor %}
+{% endif %}
 
     <h2>Hello, {{user.first_name}}!</h2>
 
