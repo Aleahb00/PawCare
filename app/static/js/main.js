@@ -1,4 +1,4 @@
-<script>
+
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.querySelector(".pc-nav__toggle");
     const menu = document.querySelector("#pcNav");
@@ -10,4 +10,3 @@
       btn.setAttribute("aria-expanded", (!expanded).toString());
     });
   });
-</script>

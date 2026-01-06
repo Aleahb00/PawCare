@@ -690,8 +690,6 @@ hr {
     box-shadow: 4px 4px var(--main-color);
 }
 
-
-
 .step {
     text-align: center;
 }
@@ -1121,4 +1119,96 @@ label {
     font-weight: 800;
     margin-bottom: .25rem;
     color: var(--font-color);
+}
+
+/* =========================
+   Auth Pages (Login/Register)
+   ========================= */
+.auth-wrapper {
+    display: flex;
+    min-height: 100vh;
+    margin: 20%;
+}
+
+.image-section {
+    position: relative;
+    flex: 1;
+    background: linear-gradient(135deg, #1e6bff 0%, #28c0f3 100%);
+    color: white;
+    padding: 4rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.image-section::before,
+.image-section::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.image-section::before {
+    width: 260px;
+    height: 260px;
+    top: 15%;
+    left: -90px;
+}
+
+.image-section::after {
+    width: 320px;
+    height: 320px;
+    bottom: -120px;
+    right: -120px;
+}
+
+.image-section h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+.image-section {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.image-section br {
+    margin-bottom: .75rem;
+}
+
+.image-section {
+    gap: .35rem;
+}
+
+.form-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.pc-brand__logo {
+    width: 70px;
+    margin-bottom: 1rem;
+}
+
+form {
+    width: 100%;
+    max-width: 350px;
+}
+
+button {
+    width: 100%;
+    padding: 0.6rem;
+    border: 2px solid var(--main-color);
+    background: var(--main-color);
+    color: white;
+    font-weight: 700;
+    margin-top: 1rem;
+    cursor: pointer;
 }
