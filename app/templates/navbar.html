@@ -2,7 +2,7 @@
 {% load static %}
 {% block navbar %}
 
-<nav class="pc-nav">
+<nav class="pc-nav" style="position: fixed; width: 100%; top: 0; z-index: 1000;">
   <div class="container pc-nav__inner">
     <a class="pc-brand" href="{% url 'landing' %}">
       <img class="pc-brand__logo" src="{% static 'images/paws-icon.png' %}" alt="PawCare logo" style="height: 50px; width: 50px;"/>

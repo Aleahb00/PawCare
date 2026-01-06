@@ -3,15 +3,14 @@
 {%block content%}
    <div style="display: flex; min-height: 100vh;">
         <div class="image-section">
-                <img class="pc-brand__logo" src="{% static 'images/paws-icon.png' %}" alt="PawCare logo" style="height: 50px; width: 50px;"/>
-                <h1>PawCare</h1>
+                <a href="{% url 'landing' %}"><img src="{% static 'images/paws-icon.png' %}" alt="PawCare logo" style="height: 50px; width: 50px;"/></a>
                 <h2>Start your pet's health journey today</h2>
                 Join thousands of pet parents who trust PawCare to keep their furry friends happy and healthy.<br>
                 <ul>
                         <li>Track unlimited pet profiles</li>
                         <li>Log vet visits & vaccinations</li>
                         <li>Set health reminders</li>
-                        </li>Connect with a community of pet lovers</li>
+                        <li>Connect with a community of pet lovers</li>
                 </ul>
                 </div>
 
