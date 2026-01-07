@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    line-height: 1.5;
+    background-image: url('/static/images/paws.png');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.health-records-page{
+    margin-left: 5%;
+    margin-right: 5%;
+    line-height: .5rem;
+}
+.card {
+    width: auto;
+    background-color: #F2F3F7;
+    border-radius: 0.75em;
+    cursor: pointer;
+    transition: ease 0.2s;
+    box-shadow: 1em 1em 1em #d8dae0b1, -0.75em -0.75em 1em #FFFFFF;
+    border: 1.5px solid #F2F3F7;
+}
+.card:hover {
+    background-color: #D3DDF1;
+    border: 1.5px solid #1677FF;
+}
+.vcontainer {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+}
+.text-wrap {
+    display: flex;
+    flex-direction: column;
+    color: #333;
+}
+.date {
+    font-size: 0.875em;
+    color: #777;
+}
+.text-link {
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+}
+.button-wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+}
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}

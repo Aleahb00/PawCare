@@ -3,7 +3,7 @@
    (Bootstrap-ish replacement)
    ========================= */
 
-:root {
+/* :root {
     --bg: #f8f9fa;
     --card: #ffffff;
     --text: #212529;
@@ -24,24 +24,13 @@
     --font-color-sub: #666;
     --bg-color: #fff;
     --main-color: #323232;
-}
+} */
 
 * {
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    color: var(--text);
-    line-height: 1.5;
 
-    background-image: url('/static/images/paws.png');
-    background-size: cover;
-    background-attachment: fixed;
-
-    background-color: var(--bg);
-}
 
 a {
     color: var(--primary);
@@ -163,7 +152,7 @@ hr {
 /* =========================
    Navbar
    ========================= */
-.pc-nav {
+/* .pc-nav {
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -498,13 +487,13 @@ hr {
     .navbar-toggler {
         display: none;
     }
-}
+} */
 
 /* =========================
    Landing Page
    ========================= */
 
-.hero {
+/* .hero {
     padding: 5rem 0 3.5rem;
 }
 
@@ -810,7 +799,7 @@ hr {
     justify-content: space-between;
     gap: 1rem;
     color: #6b7280;
-}
+} */
 
 /* responsive */
 @media (max-width: 991.98px) {
@@ -845,10 +834,16 @@ hr {
     }
 }
 
+
+
+
+
+
+
 /* =========================
    Cards
    ========================= */
-.card {
+/* .card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -882,23 +877,21 @@ hr {
 .comment-box {
     background: var(--card);
     border: 1px solid #000;
-    /* matching your inline border */
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     padding: 1rem;
     margin-bottom: 10vh;
-    /* matching your inline margin */
 }
 
 .comment-actions {
     display: flex;
     justify-content: flex-end;
-}
+} */
 
 /* =========================
    Tables
    ========================= */
-.table {
+/* .table {
     width: 100%;
     border-collapse: collapse;
     background: var(--card);
@@ -927,7 +920,7 @@ hr {
 
 .table tbody tr:last-child td {
     border-bottom: none;
-}
+} */
 
 /* =========================
    Buttons
@@ -972,7 +965,7 @@ hr {
 /* =========================
    Modal
    ========================= */
-.modal {
+/* .modal {
     position: fixed;
     inset: 0;
     display: none;
@@ -1037,7 +1030,6 @@ hr {
     border-top: 1px solid var(--border);
 }
 
-/* close X */
 .btn-close {
     width: 2rem;
     height: 2rem;
@@ -1066,7 +1058,7 @@ hr {
 
 .btn-close::after {
     transform: translate(-50%, -50%) rotate(-45deg);
-}
+} */
 
 /* =========================
    Forms
@@ -1124,7 +1116,7 @@ label {
 /* =========================
    Auth Pages (Login/Register)
    ========================= */
-.auth-wrapper {
+/* .auth-wrapper {
     display: flex;
     min-height: 100vh;
     margin: 20%;
@@ -1211,74 +1203,4 @@ button {
     font-weight: 700;
     margin-top: 1rem;
     cursor: pointer;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.health-records-page{
-    margin-left: 5%;
-    margin-right: 5%;
-    line-height: .5rem;
-}
-.card {
-    width: auto;
-    background-color: #F2F3F7;
-    border-radius: 0.75em;
-    cursor: pointer;
-    transition: ease 0.2s;
-    box-shadow: 1em 1em 1em #d8dae0b1, -0.75em -0.75em 1em #FFFFFF;
-    border: 1.5px solid #F2F3F7;
-}
-.card:hover {
-    background-color: #D3DDF1;
-    border: 1.5px solid #1677FF;
-}
-.vcontainer {
-    padding: 1rem;
-    display: flex;
-    flex-direction: row;
-}
-.text-wrap {
-    display: flex;
-    flex-direction: column;
-    color: #333;
-}
-.date {
-    font-size: 0.875em;
-    color: #777;
-}
-.text-link {
-    font-weight: 500;
-    text-decoration: none;
-    color: black;
-}
-.button-wrap {
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-    align-items: center;
-}
-.right {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-}
+} */

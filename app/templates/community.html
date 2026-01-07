@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
 
 {% include 'navbar.html' %}
 <section class="community-page">
@@ -35,7 +36,7 @@
     {% endif %}
 
 </section>
-{% comment %} <a href="javascript:history.back()">Go Back</a>
+<!-- <a href="javascript:history.back()">Go Back</a>
 
 <div class="container mt-5 community-post">
     <div class="row">
@@ -63,8 +64,8 @@
             {% endif %}
         </div>
     </div>
-</div>
-
+</div> -->
+<!-- 
 {% if user.is_authenticated %}
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createPostModal"
     action="{% url 'community' %}">Create Post</button>
@@ -94,9 +95,14 @@
             </form>
         </div>
     </div>
-</div>
- {% endcomment %}
+</div> -->
+<section>
 
+
+
+
+
+</section>
 
 
 {% endblock %}
