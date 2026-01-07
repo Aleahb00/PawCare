@@ -2,12 +2,47 @@
 {%load static%}
 {%block content%}
 
+    {% include 'navbar.html' %}
 
-<body>  
+<section class="community-page">
 
-        {% include 'navbar.html' %} 
+    <form method="POST">
+        {% csrf_token %}
+		<h1 class="ct-title text-center mb-4">Talk to Us</h1>
+
+			<!-- Name -->
+			<div class="ct-form-group position-relative">
+				<label for="formName" class="ct-d-block">
+					<i class="ct-icon" data-feather="user"></i>
+				</label>
+				<input type="text" id="formName" class="ct-form-control form-control-lg thick" placeholder="Name">
+			</div>
+
+			<!-- E-mail -->
+			<div class="ct-form-group position-relative">
+				<label for="formEmail" class="ct-d-block">
+					<i class="ct-icon" data-feather="mail"></i>
+				</label>
+				<input type="email" id="formEmail" class="ct-form-control form-control-lg thick" placeholder="E-mail">
+			</div>
+
+			<!-- Message -->
+			<div class="ct-form-group message">
+				<textarea id="formMessage" class="ct-form-control form-control-lg" rows="7" placeholder="Mensagem"></textarea>
+			</div>
+		
+			<!-- Submit btn -->
+			<div class="ct-text-center">
+				<button type="submit" class="ct-btn btn-primary" tabIndex="-1">Send message</button>
+			</div>
+	</form>
+	
+
+</section>
 
 
+
+<!-- 
                 <form method="POST">
                 {% csrf_token %}
                 {% for field in form %}
@@ -15,11 +50,37 @@
                 {% endfor %}
                 <button type="submit" class="button">Save Changes</button>
             </form>
+-->
 
 
 
-
+<!-- <form method="POST">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+        <div class="ct-form-group position-relative">
+            {% if field.label %}
+                <label for="{{ field.id_for_label }}" class="ct-d-block">
+                    {% if field.name == "email" %}
+                        <i class="ct-icon" data-feather="mail"></i>
+                    {% elif field.name == "name" or field.name == "author" %}
+                        <i class="ct-icon" data-feather="user"></i>
+                    {% endif %}
+                </label>
+            {% endif %}
+            {{ field|add_class:"ct-form-control form-control-lg thick" }}
+            {% if field.help_text %}
+                <small class="form-text text-muted">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
         </div>
- 
-</body>
+    {% endfor %}
+
+    <div class="ct-text-center">
+        <button type="submit" class="ct-btn btn-primary">Save Changes</button>
+    </div>
+</form> -->
+
 {%endblock content%}
