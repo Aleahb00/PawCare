@@ -1,9 +1,9 @@
 {%extends 'base.html'%}
 {%load static%}
 {%block content%}
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/untouched.css' %}">
 
-   <div style="display: flex; min-height: 100vh;">
+<div style="display: flex;">
         <div class="image-section">
                 <a href="{% url 'landing' %}"><img src="{% static 'images/paws-icon.png' %}" alt="PawCare logo" style="height: 50px; width: 50px;"/></a>
                 <h2>Start your pet's health journey today</h2>
@@ -16,7 +16,7 @@
                 </ul>
                 </div>
 
-        <div class="form-section">
+        <div class="form-section" style="text-align:center; ">
                 <h1>Create Your Account</h1>
                 <p>Start tracking your pet's health in today!</p>
                 <form method="POST">
@@ -26,9 +26,9 @@
                         {{field}}
                         {%endfor%}
                         <button type="submit">Register</button>
-                        <a href="{%url 'login'%}" style="font-size:12px;">Already have an account? Login Here.</a>
+                        <a href="{%url 'login'%}" style="font-size:12px; text-align: center;">Already have an account? Login Here.</a>
                 </form>
         </div>
-   </div>
+</div>
 
 {%endblock content%}

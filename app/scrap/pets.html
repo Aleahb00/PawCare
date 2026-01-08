@@ -1,12 +1,40 @@
 {%extends 'base.html'%}
 {%load static%}
 {%block content%}
-<link rel="stylesheet" href="{% static 'css/pets.css' %}">
 
 {% include 'navbar.html' %}
     <a href="javascript:history.back()">Go Back</a>
+    <section class="pet-section">
 
-    
+    <div class="container">
+        <div class="card dark">
+            <img src="https://codingyaar.com/wp-content/uploads/chair-image.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <div class="text-section">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card's
+                    content.</p>
+                </div>
+
+                <div class="cta-section">
+                <div></div>
+                <a href="#" class="btn btn-light">Buy Now</a>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
 <div class='container'>
     <div class='container text-center'>
         <div class='col'>
@@ -25,12 +53,12 @@
                                     <li>Daily Routine: {{pet.daily_routine}}</li>
                                     <li>Care instructions: {{pet.care_instructions}}</li> {% endcomment %}
 
-                                <a href="{% url 'edit-pet' pet.id %}">Edit</a>
-                                <a href="{% url 'delete_pet' pet.id %}">Delete</a>
+                                {% comment %} <a href="{% url 'edit-pet' pet.id %}">Edit</a>
+                                <a href="{% url 'delete_pet' pet.id %}">Delete</a> {% endcomment %}
                                 
                                 {% comment %} <hr></hr>
                                 <hr></hr> {% endcomment %}
-                            </div>
+                            {% comment %} </div>
                         </div>
                         {%endfor%}
                     {%else%}
@@ -68,7 +96,7 @@
                     </form>
                 <!-- </div> -->
             </div>
-        </div>
-</div>
+        </div> {% endcomment %}
+{% comment %} </div> {% endcomment %} 
 
 {%endblock content%}

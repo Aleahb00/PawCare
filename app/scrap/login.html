@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block content%}
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+
+
+<body style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align: center;">
+
+    <img class="logo" src="{% static 'images/paws-icon.png' %}" alt="PawCare logo">
+    <h2>PawCare</h2>
+    <h1>Welcome Back!</h1>
+    <p>Sign in to continue to your pet dashboard.</p>
+    <form method="POST">
+        {% csrf_token %}
+            {%for field in form%}
+            {{field.label_tag}}
+            {{field}}
+            {%endfor%}
+        <button type="submit" class="button">login</button>
+        <a  href="{%url 'register'%}" class="link" style="font-size:12px; text-align: center;">Don't have an account? Register Here.</a>
+    </form>
+
+</body>
+{%endblock content%}

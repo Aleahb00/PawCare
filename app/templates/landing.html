@@ -1,180 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
+
+{%block css%}
 <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+{%endblock%}
 
+{% include 'navbar.html' %}
 
-    <div class="landing-page">
-        {% include 'navbar.html' %}
-        <br><br>
-        {%if user.is_authenticated%}
-            <h2 style="font-size:42px; color:red;"> Logged in as <i>{{user.username}}</i></h2>
-        {%else%}
-            <h2 style="font-size:42px; color:red;"> Not logged in </h2>
-        {%endif%}
+    <section class="content-wrapper">
+        <h1>LANDING PAGE-NO STYLING</h1>
 
-        <section class="hero">
-            <div class="container hero-inner">
-                <div class="hero-left">
-                    <div class="hero-kicker"> ♡ Your pet's health companion </div>
+    </section>
 
-                    <h1 class="hero-title">
-                        Keep Your Pets <span class="text-gradient">Happy</span><br>
-                        <span class="text-and">&</span>
-                        <span class="text-accent"> Healthy</span>
-                    </h1>
-
-                    <p class="hero-subtitle">
-                        Track vet visits, manage vaccinations, and connect with a community of pet lovers. Everything you need to give your furry friends the best care.
-                    </p>
-
-                    <div class="hero-actions">
-                        <a class="btn btn-primary btn-lg" href="{% url 'register' %}">Get Started Free →</a>
-                        <a class="btn btn-outline-primary btn-lg" href="#explore-community">Explore Community</a>
-                    </div>
-                </div>
-
-                <div class="hero-right">
-                    <div class="hero-right">
-                        <div class="hero-art">
-                        <img src="{% static 'images/dog-and-cat.png' %}" alt="A dog and cat illustration">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <header class="section-header">
-                    <h2 class="section-title">Everything Your Pet Needs</h2>
-                    <p class="section-subtitle">
-                        From health tracking to community support, we’ve got all the tools to help you be the best pet parent.
-                    </p>
-                </header>
-            
-                <div class="feature-grid">
-                    <article class="feature-card">
-                        <div class="feature-icon">🐾</div>
-                        <h3>Pet Profiles</h3>
-                        <p>Create detailed profiles for each pet including behavior, allergies, routines, and care instructions.</p>
-                    </article>
-            
-                    <article class="feature-card">
-                        <div class="feature-icon">🩺</div>
-                        <h3>Vet Visit Records</h3>
-                        <p>Log every vet appointment with dates, reasons, treatments, and important notes.</p>
-                    </article>
-            
-                    <article class="feature-card">
-                        <div class="feature-icon">🔔</div>
-                        <h3>Vaccination Reminders</h3>
-                        <p>Never miss a vaccination date with customizable reminders for all your pets.</p>
-                    </article>
-            
-                    <article class="feature-card">
-                        <div class="feature-icon">👥</div>
-                        <h3>Community Support</h3>
-                        <p>Connect with fellow pet owners to share experiences and get advice.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section">
-            <div class="container">
-                <header class="section-header">
-                    <h2 class="section-title">How It Works</h2>
-                    <p class="section-subtitle">Get started in minutes and keep your pet’s health organized forever.</p>
-                </header>
-        
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-badge">01</div>
-                        <h3>Create Pet Profile</h3>
-                        <p>Add your pet’s details, behavior, and care needs.</p>
-                    </div>
-        
-                    <div class="step">
-                        <div class="step-badge">02</div>
-                        <h3>Log Health Records</h3>
-                        <p>Track vet visits, vaccinations, and medications.</p>
-                    </div>
-        
-                    <div class="step">
-                        <div class="step-badge">03</div>
-                        <h3>Join Community</h3>
-                        <p>Share experiences and get advice from other pet parents.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section">
-            <div class="container">
-                <header class="section-header">
-                    <h2 class="section-title" id="explore-community">Loved by Pet Parents</h2>
-                    <p class="section-subtitle">See what other pet owners are saying about PawCare.</p>
-                </header>
-        
-                <div class="testimonial-grid">
-                    <article class="testimonial-card">
-                        <div class="testimonial-head">
-                            <div class="mini-avatar">🐶</div>
-                            <div>
-                                <div class="t-name">Sarah M.</div>
-                                <div class="t-meta">Owner of Luna (Golden Retriever)</div>
-                            </div>
-                        </div>
-                        <p class="t-quote">“PawCare has been a lifesaver! I can finally keep track of all of Luna’s appointments
-                            and vaccinations in one place.”</p>
-                    </article>
-        
-                    <article class="testimonial-card">
-                        <div class="testimonial-head">
-                            <div class="mini-avatar">🐱</div>
-                            <div>
-                                <div class="t-name">James K.</div>
-                                <div class="t-meta">Owner of Whiskers &amp; Mittens (Cats)</div>
-                            </div>
-                        </div>
-                        <p class="t-quote">“The community feature is amazing. Got great advice from other cat owners about my
-                            kitties’ diet concerns.”</p>
-                    </article>
-        
-                    <article class="testimonial-card">
-                        <div class="testimonial-head">
-                            <div class="mini-avatar">🐶</div>
-                            <div>
-                                <div class="t-name">Emily R.</div>
-                                <div class="t-meta">Owner of Max (Beagle)</div>
-                            </div>
-                        </div>
-                        <p class="t-quote">“I love how easy it is to share Max’s care instructions with pet sitters. Everything
-                            is in one profile!”</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-        
-        <section class="cta">
-            <div class="container">
-                <div class="cta-box">
-                    <div class="cta-icon">🛡️</div>
-                    <h2>Ready to Give Your Pet the Best Care?</h2>
-                    <p>Join thousands of pet parents who trust PawCare to keep their furry friends healthy and happy.</p>
-                    <a class="btn btn-primary btn-xl" href="{% url 'register' %}">Start Your Free Account →</a>
-                </div>
-            </div>
-        </section>
-        
-        <footer class="site-footer">
-            <div class="container footer-bottom">
-                <div>© 2026 PawCare. All rights reserved.</div>
-                <div>Made with 💙 for pet lovers</div>
-            </div>
-        </footer>
-        </div>
-        </div>
 
 {% endblock content %}
