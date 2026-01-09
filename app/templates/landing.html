@@ -9,10 +9,168 @@
 
 {% include 'navbar.html' %}
 
-    <section class="content-wrapper">
-        <h1>LANDING PAGE-NO STYLING</h1>
+<section class="content-wrapper">
 
-    </section>
+    <div class="landing-wrapper">
+
+        <h1>Landing page</h1>
+        {%if user.is_authenticated%}
+            <h2 style="font-size:42px; color:red;"> Logged in as <i>{{user.username}}</i></h2>
+            {%else%}
+            <h2 style="font-size:42px; color:red;"> Not logged in </h2>
+        {%endif%}
+
+        <div class="landing-section1" style="margin-left: 6%; margin-right: 6%;">
+            <div class="landing-motto">
+                <p>♡ You pet's health companion</p>
+                <h1 class="landing-h1">Keep Your Pets Happy & Healthy</h1>
+                <p>Track vet visits, manage vaccinations, and connect with a community of pet lovers.
+                    Everything you need to give your furry friends the best care.</p>
+                    <a class="landing-btn1">Get started</a>
+                    <a class="landing-btn2">Explore Community</a>
+            </div>
+
+            <div class="landing-image">
+                <img style="height: 450px; width: 450px;" src ="pet-and-cat.png" alt="pets image">
+            </div>
+        </div>
+
+
+        <hr style="color: #00000083; margin: 6%;">
+
+
+        <section style="background-color: rgba(245, 242, 242, 0.554); padding: 5px;">
+            <div class="landing-section2">
+                <div class="landing-headers">
+                    <h1 style="font-size: 50px; font-weight: 900; letter-spacing: -0.02em;">Everything Your Pet Needs</h1>
+                    <p style="font-size: 15px; color: gray; font-weight: 600;">From health tracking to community support, we've got all the tools
+                        to help you be the best pet parent.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card" style="border:1px solid black;">
+                        <h2>🐾 Pet Profiles</h2>
+                        <p style="color: gray;">Create detailed profiles for each pet including behavior,
+                            allergies, routines, and care instructions.</p>
+                    </div>
+                    <div class="feature-card" style="border:1px solid black;">
+                        <h2>🩺 Vet Visit Records</h2>
+                        <p style="color: gray;">Log every vet appointment with dates, reasons,
+                            treatments, and important notes.</p>
+                    </div>
+                    <div class="feature-card" style="border:1px solid black;">
+                        <h2>🔔 Vaccination Reminders</h2>
+                        <p style="color: gray;">Never miss a vaccination date with
+                            customizable reminders for all your pets.</p>
+                    </div>
+                    <div class="feature-card" style="border:1px solid black;">
+                        <h2>👥 Community Support</h2>
+                        <p style="color: gray;">Connect with fellow pet owners to share experiences and get advice.</p>
+                    </div>
+                </div>    
+            </div>    
+        </section>
+
+        <hr style="color: #00000083; margin: 6%;">
+
+        <section style='margin-bottom:20vh; margin-left: 5%; margin-right: 5%;'>
+            <div class="landing-headers">
+                <h1 style="font-size: 50px; font-weight: 900; letter-spacing: -0.02em;">How It Works</h1>
+                <p style="font-size: 15px; color: gray; font-weight: 600;">Get started in minutes and keep your pet's health organized forever.</p>
+            </div>
+
+            <div class="how-it-works-grid">
+                <div class="how-it-works-card">
+                    <div class="step-number">1</div>
+                    <h2>Create Pet Profile</h2>
+                    <p>Add your pet's details, behavior, and care needs.</p>
+                </div>
+
+                <div class="how-it-works-card">
+                    <div class="step-number">2</div>
+                    <h2>Track Health Records</h2>
+                    <p>Track vet visits, vaccinations, and medications.</p>
+                </div>
+                
+                <div class="how-it-works-card">
+                    <div class="step-number">3</div>
+                    <h2>Join Community</h2>
+                    <p>Share experiences and get advice from other pet parents.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section style='margin-bottom:20vh; margin-left: 5%; margin-right: 5%;'>
+            <div class="landing-headers">
+                <h1 style="font-size: 50px; font-weight: 900; letter-spacing: -0.02em;">Loved by Pet Parents</h1>
+                <p style="font-size: 15px; color: gray; font-weight: 600;" >See what other pet owners are saying about PawCare.</p>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="reviews-card">
+                    <h1>🐕 Sarah M.</h1>
+                    <h4>Owner of Luna (Golden Retriever)<h4>
+                    <p>"PawCare has been a lifesaver! I can finally keep track of all of Luna's appointments and vaccinations in one place."</p>
+                </div>
+
+                <div class="reviews-card">
+                    <h1>🐱James K.</h1>
+                    <h4>Owner of Whiskers & Mittens (Cats)<h4>
+                    <p>"The community feature is amazing. Got great advice from other cat owners about my kitties' diet concerns."</p>
+                </div>
+
+                <div class="reviews-card">
+                    <h1>🦮 Emily R.</h1>
+                    <h4>Owner of Max (Beagle)<h4>
+                    <p>"I love how easy it is to share Max's care instructions with pet sitters. Everything is in one profile!"</p>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="landing-section4" style="background-color: rgba(245, 242, 242, 0.554);" >
+            <h1>Ready to Give Your Pet the Best Care?</h1>
+            <p>Join thousands of pet parents who trust PawCare to keep their furry friends healthy and happy.</p>
+            <button> Start Your Free Account</button>
+        </div>
+
+
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-about">
+                <h1>PawCare</h1>
+                <p>Keep track of your pet's health, connect with other pet parents, and give your furry friends the best care possible.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a>My Pets</a></li>
+                        <li><a>Health Records</a></li>
+                        <li><a>Community</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-support">
+                    <h2>Support</h2>
+                        <ul>
+                            <li><a>Help Center</a></li>
+                            <li><a>Privacy Policy</a></li>
+                            <li><a>Terms of Service</a></li>
+                        </ul>
+                </div>    
+            </div>
+                <p>&copy; 2026 PawCare. All rights reserved.</p>
+        </footer>
+
+        <div class="container">
+            <h1>This text will have a typing effect</h1>
+        </div>
+
+    </div>
+
+</section>
 
 
 {% endblock content %}
