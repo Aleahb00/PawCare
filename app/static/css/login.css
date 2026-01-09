@@ -32,16 +32,19 @@
 
 
 
-/* ACTUAL FORM CSS */
+/* OFFICIAL FORM */
 .login-wrapper .card {
     width: 30%;
-    padding: 2rem 4rem;
+    padding: 2rem 8rem;
     text-align: center;
     background: #fff;
     border-radius: 40px;
     border: #000 solid 1px;
     box-shadow: #000 5px 15px 5px;
     align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .login-wrapper .field {
@@ -54,6 +57,8 @@
     border-radius: 4px;
     padding: 1em 1em;
     border: #000 solid 1px;
+    min-height: 1rem;
+
 
 }
 
@@ -91,6 +96,7 @@
     color: #5e6681;
     box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%);
     transition: all .3s ease-in-out;
+    align-self: center;
 }
 
 .login-wrapper .btn-link {
@@ -113,6 +119,11 @@
 
 .login-wrapper .btn-link:hover {
     color: #ffeba7;
+}
+
+.login-wrapper .btn-wrapper{
+    display: flex;
+    justify-content: center;
 }
 
 
