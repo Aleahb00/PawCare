@@ -21,47 +21,61 @@
             <div class="card">
                 <span class="title">{{ post.title }}</span>
                 <div>
-                    <div>
-                    
-                    </div>
+                    <div></div>
                     <div class="reply-container">
-                    <div class="user">
-                        <div>
-                        
+                        <div class="user">
+                            <div></div>
+                            <div class="user-info">
+                                <span>{{post.author.username}}</span>
+                                <p>{{post.created_at}}</p>
+                            </div>
                         </div>
-                        <div class="user-info">
-                        <span>{{post.author.username}}</span>
-                        <p>{{post.created_at}}</p>
-                        </div>
-                    </div>
-                    <p class="reply-content">
+                        <p class="reply-content">
                         {{post.content}}
-                    </p>
+                        </p>
                     </div>
                 </div>
+
+
+<div class='comment-section'>
+    <h3 class="comments-title">Replies</h3>
+        {% if post.comments.all %}
+            <div class="comments-list">
+                {% for reply in post.comments.all %}
+                    <div class="comment-item">
+                        <div class="user">
+                            <div class="user-info">
+                                <span>{{ reply.author.username }} - <span>{{ reply.created_at }}</span></span>
+                            </div>
+                        </div>
+                        <p class="reply-content">{{ reply.content }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-replies">No replies yet. Be the first to reply!</p>
+        {% endif %}
+</div>
+
 
                 <div class="text-box">
                     <form method="POST" action="{% url 'post-details' post.id %}">
-                    {% csrf_token %}
-                        {% render_field form.content class='box-container' placeholder="Reply" %}
-                    
+                        {% csrf_token %}
+                        {% render_field form.content class='box-container' placeholder="Post your reply" %}
                     </form>
                         <div class="formatting">
-                        
-                        
-                        <button type="submit" class="send" title="Send">
-                            <svg fill="none" viewBox="0 0 24 24" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#ffffff" d="M12 5L12 20"></path>
-                            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#ffffff" d="M7 9L11.2929 4.70711C11.6262 4.37377 11.7929 4.20711 12 4.20711C12.2071 4.20711 12.3738 4.37377 12.7071 4.70711L17 9"></path>
-                            </svg>
-                        </button>
+                            <button type="submit" class="send" title="Send">
+                                <svg fill="none" viewBox="0 0 24 24" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#ffffff" d="M12 5L12 20"></path>
+                                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" stroke="#ffffff" d="M7 9L11.2929 4.70711C11.6262 4.37377 11.7929 4.20711 12 4.20711C12.2071 4.20711 12.3738 4.37377 12.7071 4.70711L17 9"></path>
+                                </svg>
+                            </button>
                         </div>
-                    </div>
-                    </div>
                 </div>
-                </div>
-
             </div>
+
+</div>
+
 
 
 
