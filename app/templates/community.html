@@ -11,15 +11,15 @@
 
     <section class="content-wrapper">
 
-
         <div class="community-wrapper">
 
 
-        <form method="GET" id='searchform'>
-            <input type="text" name="q" placeholder="Search posts..." value="{{ query }}">
-            <button type="submit" id='searchbtn'>Search</button>
+        <form method="GET" class='input-container'>
+            <input type="text" name="q" placeholder="Search posts..." >
+            <button type="submit" class='button'>Search</button>
         </form>
 
+            {% comment %} TODO {% endcomment %}
             <a href="javascript:history.back()">Go Back</a>
 
             {% if posts %}
@@ -60,7 +60,7 @@
                     </div>
                 {% endfor %}
             {% else %}
-                <p class="text-muted">No posts yet. Be the first to share!</p>
+                <p class="text-muted">No posts yet available.</p>
             {% endif %}
 
 
