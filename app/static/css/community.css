@@ -9,6 +9,12 @@
 }
 
 
+/* SEARCH CSS */
+.all-posts{
+    display: none;
+}
+
+
 /* POST CSS */
 .post-card {
     background-color: #fff;
