@@ -8,7 +8,10 @@
 
     {%if user.is_authenticated%}
     <nav class="nav-bar">
-        <a href="{% url 'landing' %}" style="margin-right:auto;" >PawCare</a>
+        <a href="{% url 'landing' %}" style="margin:auto;">
+            <img  class="icon" src="{% static 'images/paws-icon.png' %}" alt="Logo">
+        </a>
+
         <div style="display:flex; gap:10px;">
             <a href="{% url 'pets' %}" class="active">My Pets</a>
             <div class="dropdown">

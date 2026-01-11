@@ -12,6 +12,24 @@
     <section class="content-wrapper">
 
         <div class="pets-wrapper">
+
+            <button id="openFormButton">Open Form</button>
+
+            <div id="formModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Form Title</h2>
+                    <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Add Pet</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="pets-wrapper">
             <form method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -48,5 +66,17 @@
         <img src="{{ pet.image.url }}" width="200">
         {% endif %}
         <button class="print-btn" onclick="window.print()">Print</button>
+<<<<<<< HEAD
     </section>
+=======
+
+        <hr><hr>
+
+    </section>
+
+
+
+
+
+>>>>>>> da8756c2477631ae626536f6fa5f6d787ba3ae8a
 {% endblock content %}

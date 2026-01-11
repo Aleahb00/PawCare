@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http.response import HttpResponse
 from django.http.request import HttpRequest
 from django.contrib.auth import authenticate, login, logout
+from django.core.exceptions import PermissionDenied
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponseForbidden
 from django.contrib.auth.decorators import *
@@ -204,7 +205,7 @@ def community_view(request:HttpRequest)->HttpResponse:
 def edit_post_view(request:HttpRequest, post_id:int)->HttpResponse:
     post = get_object_or_404(CommunityPost, id=post_id)
     if not post.author == request.user:
-        return HttpResponseForbidden()
+        raise PermissionDenied
     form = CommunityPostForm(request.POST or None, instance=post)
     if request.method == "POST" and form.is_valid():
         form.save()
@@ -238,7 +239,8 @@ def delete_comment_view(request:HttpRequest, comment_id:int)->HttpResponse:
     return redirect('community')
 
 
-
+def error_view(request:HttpRequest)->HttpResponse:
+    return render(request, '403.html', status=403)
 
 
 @login_required
