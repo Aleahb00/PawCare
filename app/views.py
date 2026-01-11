@@ -179,7 +179,7 @@ def community_view(request:HttpRequest)->HttpResponse:
     query = request.GET.get('q') 
     results = CommunityPost.objects.all()
     if query:
-        results = results.filter(Q(title__icontains=query))
+        posts = results.filter(Q(title__icontains=query))
     else:
         results = CommunityPost.objects.none()
     if request.method == 'POST':
@@ -191,7 +191,7 @@ def community_view(request:HttpRequest)->HttpResponse:
             return redirect('community')
     else:
         form = CommunityPostForm()
-    return render(request, 'community.html', {'posts':posts, 'form':form, 'results':results, 'query':query})
+    return render(request, 'community.html', {'posts':posts, 'form':form, 'query':query})
 
 
 @login_required

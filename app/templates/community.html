@@ -19,64 +19,9 @@
             <input type="text" name="q" placeholder="Search posts..." value="{{ query }}">
             <button type="submit" id='searchbtn'>Search</button>
         </form>
-        {% if results %}
-                    <h2>Search Results for "{{ query }}"</h2>
-                    <ul>
-                        {% for post in results %}
-
-
-                            <div class="post-card">
-                        <div class="post-content">
-                            <div class="post-header">
-                                <div class="post-main">
-                                    <div class="post-meta">
-                                        <span class="username">{{post.author}}</span>
-                                        {% comment %} <span class="pet-name">{{post.author.pet}} ({{post.author.pet.breed}})</span> {% endcomment %}
-                                        <span class="post-time">{{post.created_at}}</span>
-
-                                        <a class="options" href="{% url 'edit-post' post.id%}">
-                                        <svg xml:space="preserve" viewBox="0 0 41.915 41.916" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Capa_1" version="1.1" fill="#000000"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M11.214,20.956c0,3.091-2.509,5.589-5.607,5.589C2.51,26.544,0,24.046,0,20.956c0-3.082,2.511-5.585,5.607-5.585 C8.705,15.371,11.214,17.874,11.214,20.956z"></path> <path d="M26.564,20.956c0,3.091-2.509,5.589-5.606,5.589c-3.097,0-5.607-2.498-5.607-5.589c0-3.082,2.511-5.585,5.607-5.585 C24.056,15.371,26.564,17.874,26.564,20.956z"></path> <path d="M41.915,20.956c0,3.091-2.509,5.589-5.607,5.589c-3.097,0-5.606-2.498-5.606-5.589c0-3.082,2.511-5.585,5.606-5.585 C39.406,15.371,41.915,17.874,41.915,20.956z"></path> </g> </g> </g></svg>
-                                        </a>
-                                    </div>
-                                    
-                                    <h3 class="post-title">{{post.title}}</h3>
-                                    <p class="post-description">{{post.content}}</p>
-                                    {% if tags %}
-                                        <div class="post-tags">
-                                            {%for tag in tags%}
-                                                <span class="tag">{{post.tag}}</span>
-                                            {% endfor %}
-                                        </div>
-                                    {% endif %}
-                                    <div class="post-actions">
-                                        <button class="action-btn">
-                                            <a href="{% url 'post-details' post.id %}">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                                                </svg>
-                                                replies
-                                            </a>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                        {% endfor %}
-                    </ul>
-                {% else %}
-
-                {% if query %}
-                    <p>No results found for "{{ query }}"</p>
-                {% else %}
-                    <p>Enter a search query to find posts.</p>
-                {% endif %}
-                {% endif %}
 
             <a href="javascript:history.back()">Go Back</a>
 
-<div class='all-posts' id='allposts'>
             {% if posts %}
                 {% for post in posts %}
                     <div class="post-card">
@@ -85,14 +30,11 @@
                                 <div class="post-main">
                                     <div class="post-meta">
                                         <span class="username">{{post.author}}</span>
-                                        {% comment %} <span class="pet-name">{{post.author.pet}} ({{post.author.pet.breed}})</span> {% endcomment %}
                                         <span class="post-time">{{post.created_at}}</span>
-
                                         <a class="options" href="{% url 'edit-post' post.id%}">
                                         <svg xml:space="preserve" viewBox="0 0 41.915 41.916" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="Capa_1" version="1.1" fill="#000000"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M11.214,20.956c0,3.091-2.509,5.589-5.607,5.589C2.51,26.544,0,24.046,0,20.956c0-3.082,2.511-5.585,5.607-5.585 C8.705,15.371,11.214,17.874,11.214,20.956z"></path> <path d="M26.564,20.956c0,3.091-2.509,5.589-5.606,5.589c-3.097,0-5.607-2.498-5.607-5.589c0-3.082,2.511-5.585,5.607-5.585 C24.056,15.371,26.564,17.874,26.564,20.956z"></path> <path d="M41.915,20.956c0,3.091-2.509,5.589-5.607,5.589c-3.097,0-5.606-2.498-5.606-5.589c0-3.082,2.511-5.585,5.606-5.585 C39.406,15.371,41.915,17.874,41.915,20.956z"></path> </g> </g> </g></svg>
                                         </a>
                                     </div>
-                                    
                                     <h3 class="post-title">{{post.title}}</h3>
                                     <p class="post-description">{{post.content}}</p>
                                     {% if tags %}
@@ -120,13 +62,9 @@
             {% else %}
                 <p class="text-muted">No posts yet. Be the first to share!</p>
             {% endif %}
-</div>
-
 
 
         </div>
-
-
 
 
     </section>
