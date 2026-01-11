@@ -12,7 +12,10 @@
 {% include 'navbar.html' %}
 
     <section class="content-wrapper">
-        <a href="javascript:history.back()">Go Back</a>
+        <button>
+            <span><a href="javascript:history.back()" class="box">Back</a></span>
+
+</button>
 
 
         <div class="post-details-wrapper">
@@ -38,7 +41,9 @@
 
 
 <div class='comment-section'>
-    <h3 class="comments-title">Replies</h3>
+    <div class='comments-title-section'>
+        <h3 class="comments-title">Replies</h3>
+    </div>
         {% if post.comments.all %}
             <div class="comments-list">
                 {% for reply in post.comments.all %}
@@ -62,7 +67,6 @@
                     <form method="POST" action="{% url 'post-details' post.id %}">
                         {% csrf_token %}
                         {% render_field form.content class='box-container' placeholder="Post your reply" %}
-                    </form>
                         <div class="formatting">
                             <button type="submit" class="send" title="Send">
                                 <svg fill="none" viewBox="0 0 24 24" height="18" width="18" xmlns="http://www.w3.org/2000/svg">
@@ -71,6 +75,7 @@
                                 </svg>
                             </button>
                         </div>
+                    </form>
                 </div>
             </div>
 

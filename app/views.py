@@ -221,7 +221,7 @@ def post_detail_view(request:HttpRequest, post_id:int)->HttpResponse:
             new_comment.author = request.user
             new_comment.post = post
             new_comment.save()
-            return redirect('community')
+            return redirect(request.path_info)
     else:
         form = CommentForm() 
     return render(request, 'postDetails.html', {'post': post, 'form': form})

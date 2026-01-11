@@ -136,6 +136,41 @@
     width: 20px;
 }
 
+
+/* Hidden by default */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Dimmed background */
+    z-index: 1000;
+}
+
+/* Style the popup content box */
+.popup-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    width: 300px;
+    border-radius: 5px;
+    position: relative;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+
+
+
 .post-description {
     font-size: 14px;
     color: #000;
@@ -239,6 +274,7 @@
 }
 
 .title {
+    justify-content: center;
     width: 100%;
     height: 70px;
     position: relative;
@@ -383,16 +419,26 @@
 /* ANCHOR COMMENTS SECTION */
 .comment-section{
     background: white;
-    height: auto;
+    height: 20rem;
     padding: 1.5rem;
     padding-top: 0;
     align-self: center;
     top: 0;
     margin-bottom: 2%;
     overflow-y: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-
+.comments-title-section{
+    position: sticky;
+    background-color: white;
+    top: 0;
+    margin-bottom: 5%;
+}
 
 .comments-title {
     font-weight: 700;
@@ -457,81 +503,3 @@
     font-style: italic;
 } 
 
-
-
-
-
-
-
-
-
-/* .comments-section {
-    margin-top: 20rem;
-    width: 100%;
-}
-
-.comments-title {
-    font-weight: 700;
-    font-size: 18px;
-    color: #47484b;
-    margin-bottom: 1.5rem;
-    padding-left: 20px;
-    border-bottom: 1px solid #f1f1f1;
-    padding-bottom: 1rem;
-}
-
-.comments-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.comment-item {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 1.5rem;
-    background-color: #f9f9f9;
-    border-radius: 12px;
-    border-left: 3px solid #4998FF;
-}
-
-.comment-item .user {
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
-.comment-item .user-info {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.comment-item .user-info span {
-    font-weight: 700;
-    font-size: 14px;
-    color: #47484b;
-}
-
-.comment-item .user-info p {
-    font-weight: 600;
-    font-size: 12px;
-    color: #acaeb4;
-}
-
-.comment-item .reply-content {
-    font-size: 14px;
-    line-height: 22px;
-    font-weight: 600;
-    color: #5f6064;
-    text-align: left;
-    padding: 0;
-}
-
-.no-replies {
-    text-align: center;
-    font-size: 14px;
-    color: #acaeb4;
-    padding: 2rem 1.5rem;
-    font-style: italic;
-} */

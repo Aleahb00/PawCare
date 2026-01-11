@@ -1,6 +1,3 @@
-const allposts = document.getElementById('allposts');
-const searchbtn = document.getElementById('seachbtn');
-postform = document.getElementById('allposts');
   // document.addEventListener("DOMContentLoaded", () => {
   //   const btn = document.querySelector(".pc-nav__toggle");
   //   const menu = document.querySelector("#pcNav");
