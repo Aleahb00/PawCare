@@ -9,13 +9,19 @@
 
 {% include 'navbar.html' %}
 
-    <section class="content-wrapper">
+    <section class="content-wrapper" style="margin-bottom: 5%;">
 
-        <div class="pets-wrapper">
+        <div class="pets-wrapper header-section">
 
-            <button id="openFormButton">Open Form</button>
+            <div class="pets-header">
+                <h1>My Pets</h1>
+                <p>Manage your pet profiles and keep track of their information.</p>
+            </div>
 
-            <div id="formModal" class="modal">
+            <button id="openFormButton">+ Add New Pet</button>
+
+
+            <div id="formModal" class="modal" enctype="multipart/form-data">
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2>Form Title</h2>
@@ -29,54 +35,56 @@
 
         </div>
 
-        <div class="pets-wrapper">
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Add Pet</button>
-            </form>
-        </div>
+        <div class="pets-wrapper pets-layout">
 
-        <div class="pets-wrapper">
-            <h2>Your Pets</h2>
-            <ul>
-                {% for pet in pets %}
-                <li>
-                    <h3>{{ pet.name }}</h3>
-                    <p>Image: {{ pet.image }}</p>
-                    <p>Species: {{ pet.species }}</p>
-                    <p>Breed: {{ pet.breed }}</p>
-                    <p>Age: {{ pet.age }}</p>
-                    <p>Allergies: {{ pet.allergies }}</p>
-                    <p>Personality: {{ pet.personality }}</p>
-                    <p>Daily Routine: {{ pet.daily_routine }}</p>
-                    <p>Care Instructions: {{ pet.care_instructions }}</p>
-                </li>
-                {% empty %}
-                <li>No pets added yet.</li>
+            <div class="pet-left-side">
+                {% for p in pets %}
+                    <div class="pet-card">
+                        <a href="?pet={{ p.id }}">
+                            <h3>{{ p.name }}</h3>
+                            <p>{{ p.species }} • {{ p.age }} yrs</p>
+                        </a>
+                    </div>
                 {% endfor %}
-            </ul>
-        </div>
+            </div>
 
-        <h1>{{ pet.name }}</h1>
-        <p><strong>Species:</strong> {{ pet.species }}</p>
-        <p><strong>Age:</strong> {{ pet.age }}</p>
+            <div class="pet-right-side">
+                <ul>
+                    <div class="pet-info-card">
+                        {% if selected_pet %}
+                            <h1>{{ selected_pet.name }}</h1>
+                            {% if pet.image %}
+                            <img src="{{ pet.image.url }}" alt="{{ pet.name }}" width="200">
+                            {% endif %}
+                            <p><strong>Species:</strong> {{selected_pet.species }}</p>
+                            <p><strong>Breed:</strong> {{selected_pet.breed }}</p>
+                            <p><strong>Age:</strong> {{selected_pet.age }}</p>
+                            <p><strong>Allergies:</strong> {{selected_pet.allergies }}</p>
+                            <p><strong>Personality:</strong> {{selected_pet.personality }}</p>
+                            <p><strong>Daily Routine:</strong> {{selected_pet.daily_routine }}</p>
+                            <p><strong>Care Instructions:</strong> {{selected_pet.care_instructions }}</p>
+                            <button class="print-btn" onclick="window.print()">Print</button>
+                    </div>
+                    {% else %}
+                    <div class="no-pet-selected">
+                        <h3>Select a Pet to view their information</h3>
+                        <p>Click a pet from the lsit to view their details</p>
+                    </div>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
 
         {% if pet.image %}
         <img src="{{ pet.image.url }}" width="200">
         {% endif %}
-        <button class="print-btn" onclick="window.print()">Print</button>
-<<<<<<< HEAD
-    </section>
-=======
-
-        <hr><hr>
 
     </section>
 
+    
 
 
 
 
->>>>>>> da8756c2477631ae626536f6fa5f6d787ba3ae8a
+
 {% endblock content %}

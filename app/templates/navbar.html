@@ -25,7 +25,9 @@
         </div>
         <a href="{% url 'logout' %}" style="margin-left:auto; color: red;">Logout</a>
     </nav>
+
     {%else%}
+
     <nav class="nav-bar">
         <a href="{% url 'landing' %}" style="margin-right:auto;" >PawCare</a>
         <div style="display:flex; gap:10px;">
@@ -36,9 +38,5 @@
     {%endif%}
 
 </div>
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 
 {% endblock navbar %}

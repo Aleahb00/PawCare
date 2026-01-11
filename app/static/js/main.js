@@ -35,25 +35,27 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-document.addEventListener("DOMContentLoaded", function () {
-    const nav = document.querySelector(".navbar-wrapper .nav-bar");
 
-    // This is the middle links container
-    const menu = nav.children[1];
 
-    const btn = document.createElement("button");
-    btn.textContent = "☰";
-    btn.style.fontSize = "1.8rem";
-    btn.style.background = "none";
-    btn.style.border = "none";
-    btn.style.cursor = "pointer";
+// document.addEventListener("DOMContentLoaded", function () {
+//     const nav = document.querySelector(".navbar-wrapper .nav-bar");
 
-    nav.insertBefore(btn, menu);
+//     // This is the middle links container
+//     const menu = nav.children[1];
 
-    btn.addEventListener("click", () => {
-        menu.classList.toggle("open");
-    });
-});
+//     const btn = document.createElement("button");
+//     btn.textContent = "☰";
+//     btn.style.fontSize = "1.8rem";
+//     btn.style.background = "none";
+//     btn.style.border = "none";
+//     btn.style.cursor = "pointer";
+
+//     nav.insertBefore(btn, menu);
+
+//     btn.addEventListener("click", () => {
+//         menu.classList.toggle("open");
+//     });
+// });
 
 
 

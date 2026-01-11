@@ -50,19 +50,9 @@ def login_view(request:HttpRequest)->HttpResponse:
 @login_required
 def pets_view(request:HttpRequest)->HttpResponse:
     pets = Pet.objects.filter(owner=request.user)
-    if request.method == 'POST':
-        form = PetForm(request.POST, )
-        if form.is_valid():
-            new_pet = form.save(commit=False)
-            new_pet.owner = request.user
-            new_pet.save()
-            return redirect('pets')
-    else:
-        form = PetForm()
-    return render(request, 'pets.html', {'pets':pets, 'form':form})
+    pet_id = request.GET.get("pet")
+    form = PetForm()
 
-
-# def add_pet_view(request:HttpRequest)->HttpResponse:
     if request.method == 'POST':
         form = PetForm(request.POST)
         if form.is_valid():
@@ -70,9 +60,28 @@ def pets_view(request:HttpRequest)->HttpResponse:
             new_pet.owner = request.user
             new_pet.save()
             return redirect('pets')
-    else:
-        form = PetForm()
-    return render(request, 'pets.html', {'form': form})
+
+    selected_pet = None
+    if pet_id:
+        selected_pet = pets.filter(id=pet_id).first()
+
+    return render(request, 'pets.html', {
+        'pets': pets,
+        'form': form,
+        'selected_pet': selected_pet
+    })
+
+
+# VIEWS FOR ALL PET ACTIONS
+def add_pet_view(request:HttpRequest)->HttpResponse:
+    if request.method == 'POST':
+        form = PetForm(request.POST)
+        if form.is_valid():
+            new_pet = form.save(commit=False)
+            new_pet.owner = request.user
+            new_pet.save()
+            return redirect('pets')
+    return redirect('pets')
 
 @login_required
 def edit_pet_view(request:HttpRequest, pet_id:int)->HttpResponse:
@@ -90,6 +99,10 @@ def delete_pet_view(request: HttpRequest, pet_id) -> HttpResponse:
     Pet.objects.filter(id=pet_id).delete()
     return redirect('pets')
 
+@login_required
+def pet_print_view(request, pet_id):
+    pet = Pet.objects.filter(id=pet_id).delete()
+    return render(request, 'pets.html', {'pet': pet})
 
 
 @login_required
@@ -279,7 +292,5 @@ def logout_view(request:HttpRequest)->HttpResponse:
 
 #     return response
 
-def pet_print_view(request, pet_id):
-    pet = Pet.objects.filter(id=pet_id).delete()
-    return render(request, 'pets.html', {'pet': pet})
+
 
