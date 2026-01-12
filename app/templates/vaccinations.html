@@ -14,9 +14,10 @@
 
 
         <div class="vaccination-wrapper">
-
-            <h1>Health Records</h1>
-            <p>Track vet visits and vaccinations for all your pets.</p>
+            <div class='vaccination-intro-message'>
+                <h1>Health Records</h1>
+                <p>Track vet visits and vaccinations for all your pets.</p>
+            </div>
 
             <div class="upcoming-vaccinations-card">
                 <div class="card-header">
@@ -27,9 +28,8 @@
                 </div>
                 <div class="card-content">
                     <div class="vaccination-tags">
-                        <div class="vaccination-tag">
-                            {% if vaccination %}
-                                {% for v in vaccination %}
+                            {% if vaccinations %}
+                                {% for v in vaccinations %}
                                     {% if v.next_due_date|days_until <= 14 %}
                                         <div class="vaccination-tag">
                                             <span class="pet-image">{{ v.pet.image }}</span>
@@ -43,7 +43,6 @@
                             {% else %}
                                 <span class="tag-text">No vaccinations coming up!</span>
                             {% endif %}
-                        </div>
                     </div>
                 </div>
             </div>
@@ -63,7 +62,7 @@
                                 <p class="pet-name">{{vaccination.pet.name}}</p>
                             </div>
                             <div class="due-info">
-                                <span class="days-until">Due in: {{ vaccination.next_due_date|days_until }}</span>
+                                <span class="days-until">Due in: {{ vaccination.next_due_date|days_until }} days</span>
                             </div>
                         </div>
                         <div class="card-footer">

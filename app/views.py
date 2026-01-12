@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http.response import HttpResponse
 from django.http.request import HttpRequest
 from django.contrib.auth import authenticate, login, logout
+from django.utils import timezone
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import *
@@ -15,6 +16,7 @@ from django.template.loader import get_template
 
 
 # Create your views here.
+# NOTE SETUP VIEWS
 def landing_view(request:HttpRequest)->HttpResponse:
     return render(request, 'landing.html')
 
@@ -24,7 +26,6 @@ def register_view(request:HttpRequest)->HttpResponse:
         form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # UserProfile.objects.create(user=user)
             login(request,user)
             return redirect('pets')
     else:
@@ -46,7 +47,7 @@ def login_view(request:HttpRequest)->HttpResponse:
     return render(request, 'login.html', {'form':form})
 
 
-# VIEWS FOR ALL PET ACTIONS
+# NOTE PET VIEWS
 @login_required
 def pets_view(request: HttpRequest) -> HttpResponse:
     pets = Pet.objects.filter(owner=request.user)
@@ -70,6 +71,14 @@ def pets_view(request: HttpRequest) -> HttpResponse:
 
     return render(request, 'pets.html', {'pets': pets,'form': form,'selected_pet': selected_pet})
 
+    return render(request, 'pets.html', {
+        'pets': pets,
+        'form': form,
+        'selected_pet': selected_pet
+    })
+
+
+# NOTE VIEWS FOR ALL PET ACTIONS
 def add_pet_view(request:HttpRequest)->HttpResponse:
     if request.method == 'POST':
         form = PetForm(request.POST)
@@ -104,6 +113,7 @@ def pet_print_view(request, pet_id):
     return render(request, 'pets.html', {'pet': pet})
 
 
+# NOTE VET VISIT VIEWS
 @login_required
 def vet_visits_view(request:HttpRequest)->HttpResponse:
     visit = VetVisit.objects.filter(pet__owner=request.user)
@@ -138,10 +148,14 @@ def delete_vet_visit_view(request: HttpRequest, visit_id) -> HttpResponse:
     return redirect('vet-visits')
 
 
-
+# NOTE VACCINATION VIEWS 
 @login_required
 def vaccinations_view(request:HttpRequest)-> HttpResponse:
     vaccinations = Vaccination.objects.filter(pet__owner=request.user)
+    upcoming_vaccinations = [
+        v for v in vaccinations
+        if v.next_due_date and (v.next_due_date -  timezone.now().date()).days <= 14
+    ]
     if request.method == 'POST':
         form = VaccinationForm(request.POST)
         if form.is_valid():
@@ -173,6 +187,7 @@ def delete_vaccination_view(request:HttpRequest,vaccination_id:int)-> HttpRespon
     return redirect('vaccinations')
 
 
+# NOTE COMMUNITY / POST VIEWS
 @login_required
 def community_view(request:HttpRequest)->HttpResponse:
     posts = CommunityPost.objects.all().order_by('-created_at')
@@ -232,31 +247,20 @@ def delete_comment_view(request:HttpRequest, comment_id:int)->HttpResponse:
     return redirect('community')
 
 
+# NOTE ERROR VIEW
 def error_view(request:HttpRequest)->HttpResponse:
     return render(request, '403.html', status=403)
 
-
+# NOTE LOGOUT VIEW 
 @login_required
 def logout_view(request:HttpRequest)->HttpResponse:
     logout(request)
     return redirect('landing')
 
-# SEARCH VIEW - TO BE IMPLEMENTED LATER (potentially for posts, visits, etc.)
-# def search_view(request:HttpRequest)->HttpResponse:
-#     query = request.GET.get('q') 
-#     results = Course.objects.all()
-#     if query:
-#         results = results.filter(Q(title__icontains=query))
-#     else:
-#         results = Course.objects.none() 
-#     context = {
-#         'results': results,
-#         'query': query,
-#     }
-#     return render(request, 'teacher_dashboard.html', context)
 
 
 
+# NOTE EXTRA VIEWS (TO BE REMOVED UPON COMPLETION)
 # def download_pdf(request):
 #     # Fetch data
 #     pets = Pet.objects.filter(owner=request.user)

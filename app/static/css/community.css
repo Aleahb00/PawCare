@@ -1,4 +1,4 @@
-/* ANCHOR COMMUNITY WRAPPER */
+/* NOTE COMMUNITY WRAPPER */
 .community-wrapper {
     display: flex;
     flex-direction: column;
@@ -10,15 +10,15 @@
 
 
 
-/* ANCHOR SEARCH CSS */
+/* NOTE SEARCH CSS */
     .input-container {
     display: flex;
     border-radius: 1rem;
-    background: linear-gradient(45deg, #c5c5c5 0%, #ffffff 100%);
     box-shadow: 20px 20px 20px #d8d8d8,-10px -10px 20px #f8f8f8;
     padding: 0.3rem;
     gap: 0.3rem;
     margin-bottom: 2.5rem;
+    opacity: 70%;
     }
 
 
@@ -58,7 +58,6 @@
     transition: all 0.2s ease-in-out;
     }
 
-
     .input-container button:hover {
     background: linear-gradient(to right, #0095ffa8, #000fe7);
     }
@@ -81,25 +80,24 @@
 
 
 
-/* ANCHOR POST CSS */
+/* NOTE POST CSS */
 .post-card {
     background-color: #fff;
-    box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
     padding: 1.5rem;
     max-width: 45rem;
     min-width: 45rem;
     margin: 0 auto 2rem;
-    box-shadow: 20px 20px 20px #d8d8d8,-10px -10px 20px #f8f8f8;
-    border: 2px solid;
-    border-image:linear-gradient(135deg, #BFF0FA 0%, #4998FF 100%) 1;
+    box-shadow: 10px 10px 10px #d8d8d8,-10px -10px 20px #f8f8f8;
+    border: #fff 1px solid;
     position: relative;
+    border-radius: 20px;
 }
 
 
 /* TODO CHANGE STYLE */
 .post-card:hover {
-    border:blue .5px solid;
-
+    border-image:linear-gradient(135deg, #BFF0FA 0%, #4998FF 100%) 1;
+    border-radius: 0;
 }
 
 .post-header {
@@ -120,59 +118,26 @@
 }
 
 .post-meta .username {
-    font-weight: 600;
     color: #000;
     font-size: 18px;
 }
 
 .post-title {
     font-size: 22px;
-    font-weight: 600;
     color: #000;
     margin: 0.75rem 0;
+}
+
+.post-time {
+    color: #000;
 }
 
 .community-wrapper .options svg {
     width: 20px;
 }
 
-
-/* Hidden by default */
-.popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5); /* Dimmed background */
-    z-index: 1000;
-}
-
-/* Style the popup content box */
-.popup-content {
-    background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    width: 300px;
-    border-radius: 5px;
-    position: relative;
-}
-
-/* Close button */
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-
-
-
 .post-description {
-    font-size: 14px;
+    font-size: 16px;
     color: #000;
     line-height: 1.6;
     margin-bottom: 1rem;
@@ -199,6 +164,7 @@
     gap: 1rem;
 }
 
+/* TODO style button like on landing page */
 .action-btn {
     background: transparent;
     border: 1px solid #e0e0e0;
@@ -211,9 +177,7 @@
     align-items: center;
     gap: 0.5rem;
     flex-basis: 15%;
-    background: linear-gradient(135deg, #BFF0FA 0%, #4998FF 100%);
     font-weight: 900;
-    border: #000 2px solid;
     transition: all 0.2s ease-in-out;
 }
 
@@ -242,9 +206,6 @@
 
 
 
-
-
-/* ANCHOR EXTRA // FORM CSS */
 
 
 
@@ -284,7 +245,6 @@
     border-bottom: 1px solid #f1f1f1;
     font-weight: 700;
     font-size: 20px;
-    color: #47484b;
 }
 
 .title::after {
@@ -293,7 +253,6 @@
     height: 1px;
     position: absolute;
     bottom: -1px;
-    background-color: #47484b;
 }
 
 .reply-container {
@@ -324,20 +283,17 @@
 .reply-container .user .user-info span {
     font-weight: 700;
     font-size: 16px;
-    color: #47484b;
 }
 
 .reply-container .user .user-info p {
     font-weight: 600;
     font-size: 14px;
-    color: #acaeb4;
 }
 
 .reply-container .reply-content {
     font-size: 16px;
     line-height: 24px;
     font-weight: 600;
-    color: #5f6064;
     text-align: left;
     padding-left: 5%;
     padding-right: 5%;
@@ -443,7 +399,6 @@
 .comments-title {
     font-weight: 700;
     font-size: 18px;
-    color: #47484b;
     margin-bottom: 1.5rem;
     padding-left: 20px;
     border-bottom: 1px solid #f1f1f1;
@@ -479,7 +434,6 @@
 .comment-item .user-info span {
     font-weight: 700;
     font-size: 14px;
-    color: #47484b;
 }
 
 .comment-item .user-info p {
@@ -498,7 +452,6 @@
 .no-replies {
     text-align: center;
     font-size: 14px;
-    color: #acaeb4;
     padding: 2rem 1.5rem;
     font-style: italic;
 } 

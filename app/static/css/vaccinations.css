@@ -11,12 +11,35 @@
 
 
 
-/* NOTIFCATION VACS */
+/* NOTE INTRO MSG */
+.vaccination-wrapper .vaccination-intro-message {
+    line-height: 1rem;
+}
+
+
+.vaccination-wrapper .vaccination-intro-message h1{
+    font-size: 38px;
+}
+
+.vaccination-wrapper .vaccination-intro-message p {
+    font-size: 18px;
+}
+
+
+
+/* NOTE NOTIFICATION VACCINATIONS */
 .vaccination-wrapper .upcoming-vaccinations-card {
     border: aqua 1px solid;
     padding: 2%;
     border-radius: 20px;
 }
+
+.vaccination-wrapper .vaccination-tags {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5rem;
+}
+
 
 .vaccination-wrapper .header-content {
     display: flex;
@@ -25,9 +48,17 @@
     gap: .5rem;
 }
 
+.vaccination-wrapper .upcoming-vaccinations-card .due-badge {
+    padding: 2px 8px;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(13, 162, 231);
+    border-radius: 9999px;
+    }
 
-/* FOR ACTUAL VACCINES */
 
+/* NOTE FOR ACTUAL VACCINES */
 .vaccination-wrapper .vaccination-card-grid{
     display: grid;
     grid-template-columns: repeat(2, 1fr); 

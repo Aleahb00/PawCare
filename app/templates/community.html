@@ -12,7 +12,9 @@
     <section class="content-wrapper">
 
         <div class="community-wrapper">
-
+        <button>
+            <span><a href="javascript:history.back()" class="box">Back</a></span>
+        </button> 
 
         <form method="GET" class='input-container'>
             <input type="text" name="q" placeholder="Search posts..." >
@@ -20,7 +22,6 @@
         </form>
 
             {% comment %} TODO--STYLE {% endcomment %}
-            <a href="javascript:history.back()">Go Back</a>
 
             {% if posts %}
                 {% for post in posts %}
