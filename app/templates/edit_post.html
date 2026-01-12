@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+{%block css%}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+{%endblock%}
+
+{% include 'navbar.html' %}
+
+<section class="content-wrapper">
+
+
+        <button>
+            <span><a href="javascript:history.back()" class="box">Back</a></span>
+        </button>   
+
+
+        <section class="edit-post-wrapper">
+
+            <form method='POST' class='card'>
+                {% csrf_token %}
+                    <label for="{{ form.title.id_for_label }}">Title</label>
+                    <span class="title">
+                        {% render_field form.title  placeholder="Title" %}
+                    </span>
+                    <div>
+                        <div></div>
+                        <div class="reply-container">
+                            <div class="user">
+                                <div></div>
+                                <div class="user-info">
+                                    <span>{{post.author.username}}</span>
+                                    <p>{{post.created_at}}</p>
+                                </div>
+                            </div>
+                            <p class="reply-content">
+                            <label for="{{ form.content.id_for_label }}">Post Content</label>
+                            {% render_field form.content class+='reply-content' placeholder="Post Content" %}
+                            </p>
+                        </div>
+                    </div>
+            </form>
+    </section>
+
+
+    </section>
+{% endblock content %}

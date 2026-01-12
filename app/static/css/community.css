@@ -10,8 +10,25 @@
 
 
 
+/* NOTE INTRO MSG */
+.community-wrapper .community-intro-message {
+    line-height: 1rem;
+}
+
+
+.community-wrapper .community-intro-message h1{
+    font-size: 38px;
+}
+
+.community-wrapper .community-intro-message p {
+    font-size: 18px;
+}
+
+
+
+
 /* NOTE SEARCH CSS */
-    .input-container {
+.input-container {
     display: flex;
     border-radius: 1rem;
     box-shadow: 20px 20px 20px #d8d8d8,-10px -10px 20px #f8f8f8;
@@ -19,10 +36,10 @@
     gap: 0.3rem;
     margin-bottom: 2.5rem;
     opacity: 70%;
-    }
+}
 
 
-    .input-container input {
+.input-container input {
     border-radius: 0.8rem 0 0 0.8rem;
     background: #e8e8e8;
     box-shadow: inset 13px 13px 10px #dcdcdc,
@@ -34,17 +51,17 @@
     border-left: 2px solid #4998FF;
     color: #5e5e5e;
     transition: all 0.2s ease-in-out;
-    }
+}
 
 
-    .input-container input:focus {
+.input-container input:focus {
     border-left: 2px solid #4998FF;
     outline: none;
     box-shadow: inset 13px 13px 10px #BFF0FA,inset -13px -13px 10px #f4f4f4;
-    }
+}
 
 
-    .input-container button {
+.input-container button {
     flex-basis: 25%;
     padding: 1rem;
     background: linear-gradient(135deg, #BFF0FA 0%, #4998FF 100%);
@@ -56,11 +73,11 @@
     width: 100%;
     border-radius: 0 1rem 1rem 0;
     transition: all 0.2s ease-in-out;
-    }
+}
 
-    .input-container button:hover {
+.input-container button:hover {
     background: linear-gradient(to right, #0095ffa8, #000fe7);
-    }
+}
 
     @media (max-width: 500px) {
     .input-container {
@@ -83,8 +100,9 @@
 /* NOTE POST CSS */
 .post-card {
     background-color: #fff;
+    width: 60rem;
     padding: 1.5rem;
-    max-width: 45rem;
+    max-width: 60rem;
     min-width: 45rem;
     margin: 0 auto 2rem;
     box-shadow: 10px 10px 10px #d8d8d8,-10px -10px 20px #f8f8f8;
@@ -166,11 +184,12 @@
 
 /* TODO style button like on landing page */
 .action-btn {
+    text-align: center;
     background: transparent;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
-    padding: 0.5rem 1rem;
-    font-size: 13px;
+    padding: 1rem;
+    font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     display: flex;
@@ -201,8 +220,6 @@
     right: 0;
     padding: 2.5%;
 }
-
-
 
 
 

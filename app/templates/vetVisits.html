@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load functions %}
 
 {% block content %}
 
@@ -13,7 +14,34 @@
 
 
         <div class="vet-visit-wrapper">
-
+            
+            <div class="upcoming-vaccinations-card">
+                <div class="card-header">
+                    <div class="header-content">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bell-icon"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+                        <h3 class="card-title">Upcoming Vaccinations</h3>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="vaccination-tags">
+                            {% if vaccinations %}
+                                {% for v in vaccinations %}
+                                    {% if v.next_due_date|days_until <= 14 %}
+                                        <div class="vaccination-tag">
+                                            <span class="pet-image">{{ v.pet.image }}</span>
+                                            <span class="tag-text">{{ v.pet.name }} - {{ v.vaccine_name }}</span>
+                                            <span class="due-badge">
+                                                {{ v.next_due_date|days_until }} days left
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <span class="tag-text">No vaccinations coming up!</span>
+                            {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
 
 

@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap');
 body {
     margin: 0;
     /* line-height: 1.5; */
     background-image: url('/static/images/paws.png');
     background-size: cover;
     background-attachment: fixed;
+    font-family: "Overpass", sans-serif;
+    
 }
 
 

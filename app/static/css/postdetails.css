@@ -1,0 +1,162 @@
+/* NOTE EDIT WRAPPER */
+
+.edit-post-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 45rem;
+    padding: 1rem;
+    align-self: center;
+    align-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.card {
+    width: 600px;
+    height: fit-content;
+    background-color: white;
+    box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 17px 17px 27px 27px;
+    padding: 1.5rem;
+}
+
+.title {
+    justify-content: center;
+    width: 100%;
+    height: 70px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    border-bottom: 1px solid #f1f1f1;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.title::after {
+    content: '';
+    width: 8ch;
+    height: 1px;
+    position: absolute;
+    bottom: -1px;
+}
+
+.reply-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 1.5rem 0;
+    margin: 0;
+}
+
+.reply-container .user {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 15px;
+}
+
+
+
+.reply-container .user .user-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+}
+
+.reply-container .user .user-info span {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.reply-container .user .user-info p {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.reply-container .reply-content {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.text-box {
+    height: fit-content;
+    background-color: #f1f1f1;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-box .box-container {
+    background-color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.text-box textarea {
+    width: 100%;
+    height: 4rem;
+    resize: none;
+    border: 0;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    caret-color: #0a84ff;
+    padding: 2%;
+    box-sizing: border-box;
+}
+
+.text-box .formatting {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.text-box .formatting button {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 0;
+    outline: none;
+}
+
+.text-box .formatting button:hover {
+    background-color: #f1f1f1;
+}
+
+.text-box .formatting .send {
+    width: 30px;
+    height: 30px;
+    background-color: #0a84ff;
+}
+
+.text-box .formatting .send:hover {
+    background-color: #026eda;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
