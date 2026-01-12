@@ -34,17 +34,14 @@ urlpatterns = [
     path('community/delete-post/<int:post_id>/', delete_post_view, name='delete-post'),
     
     path('community/post-details/<int:post_id>/', post_detail_view, name='post-details'),
-    
+
     path('community/post-details/delete-comment/<int:comment_id>/', delete_comment_view, name='delete-comment'),
 
     
-
-
     # path('download-pdf/', views.download_pdf, name='download_pdf')
     path('pets/<int:pet_id>/print/', pet_print_view, name='pet_print'),
     
     path('error403/', error_view, name='403')
-
 ]
 
 if settings.DEBUG:

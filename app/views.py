@@ -148,7 +148,7 @@ def delete_vet_visit_view(request: HttpRequest, visit_id) -> HttpResponse:
     return redirect('vet-visits')
 
 
-# NOTE VACCINATION VIEWS 
+# VACCINATION VIEWS 
 @login_required
 def vaccinations_view(request:HttpRequest)-> HttpResponse:
     vaccinations = Vaccination.objects.filter(pet__owner=request.user)
