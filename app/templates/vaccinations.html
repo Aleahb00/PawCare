@@ -27,7 +27,6 @@
                 </div>
                 <div class="card-content">
                     <div class="vaccination-tags">
-                        <div class="vaccination-tag">
                             {% if vaccinations %}
                                 {% for v in vaccinations %}
                                     {% if v.next_due_date|days_until <= 14 %}
@@ -43,7 +42,6 @@
                             {% else %}
                                 <span class="tag-text">No vaccinations coming up!</span>
                             {% endif %}
-                        </div>
                     </div>
                 </div>
             </div>
