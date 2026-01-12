@@ -36,7 +36,9 @@
     {%else%}
 
     <nav class="nav-bar">
-        <a href="{% url 'landing' %}" style="margin-right:auto;" >PawCare</a>
+        <a href="{% url 'landing' %}" style="margin-right:auto;">
+            <img  class="icon" src="{% static 'images/paws-icon.png' %}" alt="Logo">PawCare
+        </a>
         <div style="display:flex; gap:10px;">
             <a href="{% url 'login' %}">Log in</a>
             <a href="{% url 'register' %}">Sign up</a>  
