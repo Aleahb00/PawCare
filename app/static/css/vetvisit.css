@@ -255,7 +255,7 @@
 
 .vet-visit-card .pet-name {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #000;
     margin: 0.25rem 0 0 0;
 }
 
@@ -263,7 +263,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: #6b7280;
+    color: #000;
     font-size: 0.875rem;
 }
 
@@ -278,7 +278,7 @@
 
 .vet-visit-card .notes-icon {
     min-width: 24px;
-    color: #6b7280;
+    color: #000;
 }
 
 .vet-visit-card .notes-text {
