@@ -188,21 +188,18 @@
     background: transparent;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
-    padding: 1rem;
     font-size: 14px;
+    padding: .5rem;
     font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    flex-basis: 15%;
     font-weight: 900;
     transition: all 0.2s ease-in-out;
-}
-
-.action-btn a {
     color:black;
     text-decoration: none;
+    width: fit-content;
 }
 
 .action-btn:hover {

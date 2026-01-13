@@ -11,14 +11,16 @@
 
     <section class="content-wrapper">
 
+        <button>
+            <span><a href="javascript:history.back()" class="box">Go Back</a></span>
+        </button>
+
         <div class="community-wrapper">
             <div class='community-intro-message'>
                 <h1>Community</h1>
                 <p>Share experiences and get advice from fellow pet parents.</p>
             </div>
-        <button>
-            <span><a href="javascript:history.back()" class="box">Back</a></span>
-        </button> 
+        
 
         <form method="GET" class='input-container'>
             <input type="text" name="q" placeholder="Search posts..." >
@@ -52,14 +54,12 @@
                                         </div>
                                     {% endif %}
                                     <div class="post-actions">
-                                        <button class="action-btn">
-                                            <a href="{% url 'post-details' post.id %}">
+                                            <a href="{% url 'post-details' post.id %}" class='action-btn'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                                                 </svg>
-                                                replies
+                                                Replies
                                             </a>
-                                        </button>
                                     </div>
                                 </div>
                             </div>
