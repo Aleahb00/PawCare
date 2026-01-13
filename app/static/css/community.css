@@ -629,3 +629,147 @@ a svg {
     font-style: italic;
 } 
 
+
+.delete-btn {
+    float: right;
+    margin-left: 5rem;
+}
+
+
+
+
+
+.delete-button {
+    float: right;
+}
+/* NOTE MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .community-wrapper {
+        padding: 1rem;
+    }
+
+    .community-wrapper .community-intro-message h1 {
+        font-size: 28px;
+    }
+
+    .community-wrapper .community-intro-message p {
+        font-size: 16px;
+    }
+
+    .community-wrapper .modal-content {
+        width: 90%;
+        margin: 20% auto;
+        padding: 15px;
+    }
+
+    .form-style {
+        max-width: 90%;
+        padding: 20px 25px;
+    }
+
+    #openFormButton {
+        margin-right: 1rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .post-card {
+        width: 90%;
+        min-width: auto;
+        padding: 1rem;
+        margin: 0 auto 1.5rem;
+    }
+
+    .post-details-wrapper {
+        max-width: 90%;
+        padding: 0.5rem;
+    }
+
+    .card {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .input-container {
+        margin-bottom: 1.5rem;
+    }
+
+    .comment-section {
+        height: 15rem;
+    }
+
+    .reply-container .user {
+        grid-template-columns: 50px 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-wrapper {
+        margin-top: 15rem;
+    }
+    .community-wrapper .community-intro-message h1 {
+        font-size: 22px;
+    }
+
+    .community-wrapper .community-intro-message p {
+        font-size: 14px;
+    }
+
+    .form-style {
+        max-width: 100%;
+        padding: 15px 20px;
+        margin: 10px;
+    }
+
+    .heading {
+        font-size: 24px;
+    }
+
+    .post-card {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    .post-title {
+        font-size: 18px;
+    }
+
+    .post-description {
+        font-size: 14px;
+    }
+
+    .action-btn {
+        font-size: 12px;
+        padding: 0.4rem;
+    }
+
+    #openFormButton {
+        margin-right: 0.5rem;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .card {
+        border-radius: 12px;
+    }
+
+    .title {
+        height: 60px;
+        font-size: 18px;
+        padding-left: 15px;
+    }
+
+    .comment-section {
+        height: 12rem;
+        padding: 1rem;
+    }
+
+    .reply-container .reply-content {
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    .input-container input{
+        width: 10px;
+    }
+}

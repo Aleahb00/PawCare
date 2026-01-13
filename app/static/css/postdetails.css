@@ -160,3 +160,21 @@
     }
 }
 
+.delete-btn {
+    float: right;
+    margin-left: 5rem;
+}
+
+
+
+
+
+.comment-section .delete-btn {
+    float: right;
+    color: #000;
+    margin-right: 1rem;
+}
+
+.comment-section form {
+    margin-left: 5rem;
+}

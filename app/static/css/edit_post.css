@@ -1,48 +1,11 @@
-.modal {
-    display: none; 
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0,0,0,0.4); 
-    overflow: auto;
-
-
+.edit-post-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.modal-content {
-    background-color: #e5f8fc;
-    margin: 5% auto; 
-    padding: 20px;
-    border: 1px solid #888;
-    width: 70%;
-    max-width: 500px;
-    border-radius: 5px;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
-
-
-
-
-/* NOTE FORM STYLING CSS */
 .form-style {
     max-width: 350px;
     background: #F8F9FD;
@@ -70,11 +33,10 @@
     scrollbar-width: none;
 }
 
-.form label {
+label {
     font-size: 18px;
     font-weight: 800;
 }
-
 .input {
     color: black;
     background: white;
@@ -86,6 +48,25 @@
     box-sizing: border-box;
     max-height: 3rem;
     border: #000 .5px solid;
+    margin-bottom: 2rem;
+}
+
+.post-input {
+    color: black;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: #cff0ff 0px 10px 10px -5px;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 10rem;
+    border: #000 .5px solid;
+    margin-bottom: 2rem;
+    font-size: 16px;
+    font-family: "Overpass", sans-serif;
+
+
 }
 
 .form .input::-moz-placeholder {
@@ -101,7 +82,7 @@
     border: 2px solid #12B1D1;
 }
 
-.form .login-button {
+#login-button {
     display: block;
     width: 100%;
     font-weight: bold;
