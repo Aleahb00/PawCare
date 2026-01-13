@@ -24,12 +24,16 @@
             <div id="formModal" class="modal" enctype="multipart/form-data">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <h2>Form Title</h2>
-                    <form method="POST">
+
+                    <h2 class='heading'>Form Title</h2>
+                    <hr></hr>
+                    <form method="POST" class='form'>
                     {% csrf_token %}
+                    {{field.label_tag}}
                     {{ form.as_p }}
-                    <button type="submit">Add Pet</button>
+                    <button type="submit" class='login-button'>Add Pet</button>
                     </form>
+
                 </div>
             </div>
 
