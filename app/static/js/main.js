@@ -1,16 +1,3 @@
-  // document.addEventListener("DOMContentLoaded", () => {
-  //   const btn = document.querySelector(".pc-nav__toggle");
-  //   const menu = document.querySelector("#pcNav");
-  //   if (!btn || !menu) return;
-
-  //   btn.addEventListener("click", () => {
-  //     menu.classList.toggle("show");
-  //     const expanded = btn.getAttribute("aria-expanded") === "true";
-  //     btn.setAttribute("aria-expanded", (!expanded).toString());
-  //   });
-  // });
-
-
 // FORM MODAL JS
 var modal = document.getElementById("formModal");
 var btn = document.getElementById("openFormButton");
@@ -42,9 +29,6 @@ editSpan.onclick = function() {
   editModal.style.display = "none";
 }
 
-
-const editModal = document.getElementById("editFormModal");
-    editModal.style.display = "block"
 
 // HAMBURGER MENU JS
 document.addEventListener("DOMContentLoaded", function() {

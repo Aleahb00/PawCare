@@ -22,8 +22,6 @@
     height: 100%; 
     background-color: rgba(0,0,0,0.4); 
     overflow: auto;
-
-
 }
 
 .modal-content {
@@ -291,6 +289,27 @@
     font-size: 0.875rem;
     font-weight: 500;
     margin: 0.25rem 0 0 0;
+}
+
+
+
+.vaccination-card .edit-button {
+    float: right;
+    margin-left: 1rem;
+}
+.vaccination-card .edit-button, a {
+    float: right;
+    right: 0;
+}
+
+.vaccination-card .delete-button, a {
+    float: right;
+    color: #000;
+    margin-right: 1rem;
+}
+.vaccination-card .manage-icons {
+    bottom: 0;
+    float: inline-end;
 }
 
 

@@ -191,10 +191,11 @@
     box-shadow: 0 1px 3px rgba(0,0,0,.05);
 }
 
-.pet-card a{
-    text-decoration: none;
+.pet-info-card a{
     color: inherit;
     gap: 1rem;
+    text-align: center;
+    float: right;
 }
 
 .pet-details {
@@ -209,22 +210,6 @@
     transform: translateY(-5px);
     /* Increase the shadow for depth */
     box-shadow: 0 0 25px rgba(16, 26, 208, 0.174);
-}
-
-.delete-btn:hover, .edit-btn:hover, .print-btn:hover {
-    background-color: #b8cff455;
-    color: white;
-    border: none;
-}
-
-.delete-btn, .edit-btn, .print-btn {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 10px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
 }
 
 .allergy-section {

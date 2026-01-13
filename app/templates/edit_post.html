@@ -6,7 +6,7 @@
 {% block content %}
 
 {%block css%}
-<link rel="stylesheet" href="{% static 'css/community.css' %}">
+<link rel="stylesheet" href="{% static 'css/edit_post.css' %}">
 {%endblock%}
 
 {% include 'navbar.html' %}
@@ -20,30 +20,32 @@
 
 
         <section class="edit-post-wrapper">
+            <div class='form-style'>
 
-            <form method='POST' class='card'>
-                {% csrf_token %}
-                    <label for="{{ form.title.id_for_label }}">Title</label>
-                    <span class="title">
-                        {% render_field form.title  placeholder="Title" %}
-                    </span>
-                    <div>
-                        <div></div>
-                        <div class="reply-container">
-                            <div class="user">
-                                <div></div>
-                                <div class="user-info">
-                                    <span>{{post.author.username}}</span>
-                                    <p>{{post.created_at}}</p>
+                <form method='POST' class='card'>
+                    {% csrf_token %}
+                        <label for="{{ form.title.id_for_label }}">Title</label>
+                        <span class="title">
+                            {% render_field form.title  placeholder="Title" %}
+                        </span>
+                        <div>
+                            <div></div>
+                            <div class="reply-container">
+                                <div class="user">
+                                    <div></div>
+                                    <div class="user-info">
+                                        <span>{{post.author.username}}</span>
+                                        <p>{{post.created_at}}</p>
+                                    </div>
                                 </div>
+                                <p class="reply-content">
+                                <label for="{{ form.content.id_for_label }}">Post Content</label>
+                                {% render_field form.content class+='form-input' placeholder="Post Content" %}
+                                </p>
                             </div>
-                            <p class="reply-content">
-                            <label for="{{ form.content.id_for_label }}">Post Content</label>
-                            {% render_field form.content class+='reply-content' placeholder="Post Content" %}
-                            </p>
                         </div>
-                    </div>
-            </form>
+                </form>
+            </div>
     </section>
 
 

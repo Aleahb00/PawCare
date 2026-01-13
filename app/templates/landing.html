@@ -12,20 +12,18 @@
 <section class="content-wrapper">
 
     <div class="landing-wrapper">
-        {%if user.is_authenticated%}
-            <h2 style="font-size:42px; color:red;"> Logged in as <i>{{user.username}}</i></h2>
-            {%else%}
-            <h2 style="font-size:42px; color:red;"> Not logged in </h2>
-        {%endif%}
-
         <div class="landing-section1" style="margin-left: 6%; margin-right: 6%;">
             <div class="landing-motto">
                 <p>♡ You pet's health companion</p>
                 <h1 class="landing-h1">Keep Your Pets Happy & Healthy</h1>
                 <p>Track vet visits, manage vaccinations, and connect with a community of pet lovers.
                     Everything you need to give your furry friends the best care.</p>
-                    <a class="landing-btn1">Get started</a>
-                    <a class="landing-btn2">Explore Community</a>
+                    {%if user.is_authenticated%}
+                        <a class="landing-btn2" href="{% url 'community' %}">Explore Community</a>
+                    {%else%}
+                        <a class="landing-btn1"  href="{% url 'register' %}">Get started</a>
+                        <a class="landing-btn2" href="{% url 'register' %}">Explore Community</a>
+                    {%endif%}
             </div>
 
             <div class="landing-image">
@@ -145,9 +143,15 @@
                 <div class="footer-links">
                     <h2>Quick Links</h2>
                     <ul>
+                        {%if user.is_authenticated%}
+                        <li><a href="{% url 'pets' %}">My Pets</a></li>
+                        <li><a href="{% url 'vet-visits' %}">Health Records</a></li>
+                        <li><a href="{% url 'community' %}">Community</a></li>
+                        {%else%}
                         <li><a>My Pets</a></li>
                         <li><a>Health Records</a></li>
                         <li><a>Community</a></li>
+                        {%endif%}
                     </ul>
                 </div>
 
@@ -162,10 +166,6 @@
             </div>
                 <p>&copy; 2026 PawCare. All rights reserved.</p>
         </footer>
-
-        <div class="container">
-            <h1>This text will have a typing effect</h1>
-        </div>
 
     </div>
 
