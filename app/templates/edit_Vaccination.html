@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+{%block css%}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+{%endblock%}
+
+{% include 'navbar.html' %}
+
+<section class="content-wrapper">
+
+
+        <button>
+            <span><a href="javascript:history.back()" class="box">Back</a></span>
+        </button>   
+
+
+        <section class="edit-vaccinations-wrapper">
+            <form method='POST' class='card'>
+                {% csrf_token %}
+                    <label for="{{ form.vaccine_name.id_for_label }}">Vaccine Name</label>
+                    <span class="title">
+                        {% render_field form.vaccine_name  placeholder="Vaccine Name" %}
+                    </span>
+                    <label for="{{ form.date_administered.id_for_label }}">Date Administered</label>
+                    <span class="title">
+                        {% render_field form.date_administered  placeholder="Date Administered" %}
+                    </span>
+                    <label for="{{ form.next_due_date.id_for_label }}">Next Due Date</label>
+                    <span class="title">
+                        {% render_field form.next_due_date  placeholder="Next Due Date" %}
+                    </span>
+                    <button type="submit" class='login-button'>Save Changes</button>
+            </form>
+
+
+            
+        </section>
+
+
+    </section>
+{% endblock content %}

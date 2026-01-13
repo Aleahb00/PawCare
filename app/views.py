@@ -71,11 +71,7 @@ def pets_view(request: HttpRequest) -> HttpResponse:
 
     return render(request, 'pets.html', {'pets': pets,'form': form,'selected_pet': selected_pet})
 
-    return render(request, 'pets.html', {
-        'pets': pets,
-        'form': form,
-        'selected_pet': selected_pet
-    })
+    # return render(request, 'pets.html', {'pets': pets,'form': form,'selected_pet': selected_pet})
 
 
 # NOTE VIEWS FOR ALL PET ACTIONS
@@ -141,7 +137,7 @@ def edit_vet_visit_view(request:HttpRequest, visit_id:int)->HttpResponse:
     if request.method == "POST" and form.is_valid():
         form.save()
         return redirect("vet-visits")
-    return render(request, "edit_vetVisit.html", {"form": form})
+    return render(request, "edit_VetVisit.html", {"form": form})
 
 @login_required
 def delete_vet_visit_view(request: HttpRequest, visit_id) -> HttpResponse:
@@ -171,11 +167,14 @@ def edit_vaccination_view(request:HttpRequest,vaccination_id:int)-> HttpResponse
     vaccination = get_object_or_404(Vaccination, id=vaccination_id)
     if not vaccination.pet.owner == request.user:
         raise PermissionDenied
+        
     form = VaccinationForm(request.POST or None, instance=vaccination)
+
     if request.method == "POST" and form.is_valid():
         form.save()
         return redirect("vaccinations")
-    return render(request, "edit_vaccination.html", {"form": form})
+    return render(request, "edit_Vaccination.html", {"form": form})
+
 
 @login_required
 def delete_vaccination_view(request:HttpRequest,vaccination_id:int)-> HttpResponse:

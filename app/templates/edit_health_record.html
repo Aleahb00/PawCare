@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+{%block css%}
+<link rel="stylesheet" href="{% static 'css/edit-health-record.css' %}">
+{%endblock%}
+
+{% include 'navbar.html' %}
+
+<section class="content-wrapper">
+
+
+        <button>
+            <span><a href="javascript:history.back()" class="box">Back</a></span>
+        </button>   
+
+
+        <section class="edit-health-record-wrapper">
+
+            <div class="edit-health-record-card">
+                <h2 class='heading'>Edit Health Record</h2>
+                <hr></hr>
+                <form method="POST" class='form'>
+                {% csrf_token %}
+                {{field.label_tag}}
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {% render_field field class="form-control" %}
+                        {% if field.errors %}
+                            <div class="error-messages">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <button type="submit" class='login-button'>Save Changes</button>
+                </form>
+            </div>  
+
+
+    </section>
+
+
+</section>
+{% endblock content %}

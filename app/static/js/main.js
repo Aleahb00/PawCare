@@ -17,14 +17,10 @@ var btn = document.getElementById("openFormButton");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
+btn.onclick = function() {modal.style.display = "block";}
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+span.onclick = function() {modal.style.display = "none";}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -45,6 +41,10 @@ editBtn.onclick = function() {
 editSpan.onclick = function() {
   editModal.style.display = "none";
 }
+
+
+const editModal = document.getElementById("editFormModal");
+    editModal.style.display = "block"
 
 // HAMBURGER MENU JS
 document.addEventListener("DOMContentLoaded", function() {

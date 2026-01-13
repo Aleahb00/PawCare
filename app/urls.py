@@ -37,11 +37,11 @@ urlpatterns = [
 
     path('community/post-details/delete-comment/<int:comment_id>/', delete_comment_view, name='delete-comment'),
 
-    
+
     # path('download-pdf/', views.download_pdf, name='download_pdf')
     path('pets/<int:pet_id>/print/', pet_print_view, name='pet_print'),
     
-    path('error403/', error_view, name='403')
+    path('error403/', error_view, name='403'),
 ]
 
 if settings.DEBUG:

@@ -96,6 +96,7 @@
                         <p class="notes-text">{{v.description}}</p>
                     </div>
                     <p class="vet-name">Attended by {{v.vet_name}}</p>
+                    <a href="{% url 'edit-visit' v.id %}" class="edit-button">Edit</a>
                 </div>
             </div>
         </div>

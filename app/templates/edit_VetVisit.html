@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+{%block css%}
+<link rel="stylesheet" href="{% static 'css/edit_Vetvisit.css' %}">
+{%endblock%}
+
+{% include 'navbar.html' %}
+
+<section class="content-wrapper">
+
+
+        <button>
+            <span><a href="javascript:history.back()" class="box">Back</a></span>
+        </button>   
+
+
+        <section class="edit-vetvisit-wrapper">
+            <form method='POST' class='card'>
+                {% csrf_token %}
+                    <label for="{{ form.pet.id_for_label }}">Pet</label>
+                    <span class="pet-selector">
+                        {% render_field form.pet  %}
+                    </span>
+                    <label for="{{ form.visit_date.id_for_label }}">Visit Date</label>
+                    <span class="title">
+                        {% render_field form.visit_date  placeholder="Visit Date" %}
+                    </span>
+                    <label for="{{ form.reason.id_for_label }}">Reason for Visit</label>    
+                    <span class="title">
+                        {% render_field form.reason  placeholder="Reason for Visit" %}
+                    </span>
+                    <label for="{{ form.vet_name.id_for_label }}">Veterinarian Name</label>
+                    <span class="title">
+                        {% render_field form.vet_name  placeholder="Veterinarian Name" %}
+                    </span>
+                    <label for="{{ form.notes.id_for_label }}">Notes</label>
+                    <span class="title">
+                        {% render_field form.notes  placeholder="Notes" %}
+                    </span>
+                    <button type="submit" class='login-button'>Save Changes</button>
+            </form> 
+
+        </section>
+
+
+    </section>
+{% endblock content %}

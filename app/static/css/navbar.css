@@ -6,19 +6,19 @@
 
 .navbar-wrapper .nav-bar {
     position: fixed;
-    padding: 10px;
     top: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, .82);
+    left: 0;
+    width: 100%;           
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, .95);
     backdrop-filter: blur(10px);
-    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
-    margin: 0 0 1rem 0;
-    flex-wrap: wrap;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    flex-wrap: wrap;       
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 0;      
+    z-index: 1000;
 
 }
 .navbar-wrapper .nav-bar a {
@@ -31,6 +31,18 @@
     color: #111827;
     letter-spacing: -0.01em;
 }
+
+.nav-left,
+.nav-center,
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-center {
+    gap: 10px;
+}
+
 /* The dropdown container */
 .navbar-wrapper .dropdown {
     float: left;
