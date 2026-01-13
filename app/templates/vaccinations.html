@@ -12,11 +12,28 @@
 
     <section class="content-wrapper">
 
+        <button id="openFormButton">+ Add Vaccination</button>
 
         <div class="vaccination-wrapper">
             <div class='vaccination-intro-message'>
                 <h1>Health Records</h1>
                 <p>Track vet visits and vaccinations for all your pets.</p>
+            </div>
+
+            <div id="formModal" class="modal" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+
+                    <h2 class='heading'>Form Title</h2>
+                    <hr></hr>
+                    <form method="POST" class='form'>
+                    {% csrf_token %}
+                    {{field.label_tag}}
+                    {{ form.as_p }}
+                    <button type="submit" class='login-button'>Add visit</button>
+                    </form>
+
+                </div>
             </div>
 
             <div class="upcoming-vaccinations-card">

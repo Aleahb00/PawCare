@@ -60,16 +60,23 @@ class VetVisitForm(forms.ModelForm):
         model = VetVisit
         fields = ['pet', 'visit_date', 'reason', 'vet_name', 'description']
         widgets = {
+            'pet': forms.Select(attrs={
+                'class':'input',
+            }),
             'visit_date': forms.DateInput(attrs={
+                'class':'input',
                 'type': 'date'
             }),
             'reason': forms.TextInput(attrs={
+                'class':'input',
                 'placeholder': 'Reason for visit'
             }),
             'vet_name': forms.TextInput(attrs={
+                'class':'input',
                 'placeholder': 'Veterinarian Name'
             }),
             'description': forms.Textarea(attrs={
+                'class':'input',
                 'placeholder': 'Description',
             }),
         }
@@ -80,13 +87,19 @@ class VaccinationForm(forms.ModelForm):
         model = Vaccination
         fields = ['pet', 'vaccine_name', 'date_administered', 'next_due_date']
         widgets = {
-            'vaccine_name:' : forms.TextInput(attrs={
+            'pet': forms.Select(attrs={
+                'class':'input',
+            }),
+            'vaccine_name': forms.TextInput(attrs={
+                'class':'input',
                 'placeholder': 'Vaccine Name'
             }),
             'date_administered': forms.DateInput(attrs={
+                'class':'input',
                 'type': 'date'
             }),
             'next_due_date': forms.DateInput(attrs={
+                'class':'input',
                 'type': 'date'
             })
         }

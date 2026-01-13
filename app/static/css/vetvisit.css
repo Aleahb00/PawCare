@@ -11,6 +11,149 @@
 
 
 
+/* NOTE ADD VET VISIT FORM */
+.vet-visit-wrapper .modal {
+    display: none; 
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4); 
+    overflow: auto;
+
+
+}
+
+.vet-visit-wrapper .modal-content {
+    background-color: #e5f8fc;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+    max-width: 500px;
+    border-radius: 5px;
+}
+
+.vet-visit-wrapper .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.vet-visit-wrapper .close:hover,
+.vet-visit-wrapper .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#openFormButton {
+    margin-right: 5rem;
+    float: right;
+    padding: 0.6rem 1.2rem;
+    background-image: linear-gradient(to right, #0095ffa8, #000fe7);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+
+
+
+
+
+/* NOTE FORM STYLING CSS */
+.vet-visit-wrapper .form-style {
+    max-width: 350px;
+    background: #F8F9FD;
+    background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(244, 247, 251) 100%);
+    border-radius: 40px;
+    padding: 25px 35px;
+    border: 5px solid rgb(255, 255, 255);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+    margin: 20px;
+}
+
+.vet-visit-wrapper .heading {
+    text-align: center;
+    font-weight: 900;
+    font-size: 30px;
+    color: rgb(16, 137, 211);
+}
+
+.form {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    scrollbar-width: none;
+}
+
+.form label {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.input {
+    color: black;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: #cff0ff 0px 10px 10px -5px;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 3rem;
+    border: #000 .5px solid;
+}
+
+.form .input::-moz-placeholder {
+    color: #000;
+}
+
+.form .input::placeholder {
+    color: #000;
+}
+
+.form .input:focus {
+    outline: none;
+    border: 2px solid #12B1D1;
+}
+
+.form .login-button {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
+    color: white;
+    padding-block: 15px;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.form .login-button:hover {
+    transform: scale(1.03);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
+}
+
+.form .login-button:active {
+    transform: scale(0.95);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
+}
+
+
+
+
 /* NOTE INTRO MSG */
 .vet-visit-wrapper .vet-visit-intro-message {
     line-height: 1rem;

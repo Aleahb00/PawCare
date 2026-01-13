@@ -12,11 +12,28 @@
 
     <section class="content-wrapper">
 
+            <button id="openFormButton">+ Add New Visit</button>
 
         <div class="vet-visit-wrapper">
             <div class='vet-visit-intro-message'>
                 <h1>Health Records</h1>
                 <p>Track vet visits and vaccinations for all your pets.</p>
+            </div>
+
+
+            <div id="formModal" class="modal" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+
+                    <h2 class='heading'>Form Title</h2>
+                    <hr></hr>
+                    <form method="POST" class='form'>
+                    {% csrf_token %}
+                    {{field.label_tag}}
+                    {{ form.as_p }}
+                    <button type="submit" class='login-button'>Add visit</button>
+                    </form>
+                </div>
             </div>
 
             <div class="upcoming-vaccinations-card">
@@ -81,9 +98,6 @@
                     </div>
                     <p class="vet-name">Attended by {{v.vet_name}}</p>
                 </div>
-                <button class="visit-action-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><path d="m9 18 6-6-6-6"></path></svg>
-                </button>
             </div>
         </div>
     </div>
