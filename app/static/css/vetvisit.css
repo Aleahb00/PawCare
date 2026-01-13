@@ -1,6 +1,6 @@
-/* NOTE VACCINATIONS WRAPPER */
+/* NOTE VET VISITS WRAPPER */
 
-.vaccination-wrapper {
+.vet-visit-wrapper {
     display: grid;
     gap: 1.5rem;
     padding: 2rem;
@@ -12,43 +12,42 @@
 
 
 /* NOTE INTRO MSG */
-.vaccination-wrapper .vaccination-intro-message {
+.vet-visit-wrapper .vet-visit-intro-message {
     line-height: 1rem;
 }
 
 
-.vaccination-wrapper .vaccination-intro-message h1{
+.vet-visit-wrapper .vet-visit-intro-message h1{
     font-size: 38px;
 }
 
-.vaccination-wrapper .vaccination-intro-message p {
+.vet-visit-wrapper .vet-visit-intro-message p {
     font-size: 18px;
 }
 
 
 
-/* NOTE NOTIFICATION VACCINATIONS */
-.vaccination-wrapper .upcoming-vaccinations-card {
+.vet-visit-wrapper .upcoming-vaccinations-card {
     border: aqua 1px solid;
     padding: 2%;
     border-radius: 20px;
 }
 
-.vaccination-wrapper .vaccination-tags {
+.vet-visit-wrapper .vaccination-tags {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5rem;
 }
 
 
-.vaccination-wrapper .header-content {
+.vet-visit-wrapper .header-content {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: .5rem;
 }
 
-.vaccination-wrapper .upcoming-vaccinations-card .due-badge {
+.vet-visit-wrapper .upcoming-vaccinations-card .due-badge {
     padding: 2px 8px;
     font-family: Inter, system-ui, sans-serif;
     font-size: 12px;
@@ -58,92 +57,106 @@
     }
 
 
-/* NOTE FOR ACTUAL VACCINES */
-.vaccination-wrapper .vaccination-card-grid{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 2rem;
-    row-gap: 5rem;
+
+
+/* NOTE VET VISITS CSS */
+.vet-visits-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-
-.vaccination-wrapper .vaccination-card {
-    background: #ffffff;
+.vet-visit-card {
     border: 1px solid #e5e7eb;
-    border-radius: 0.75rem;
+    border-radius: 12px;
+    background-color: #ffffff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    max-width: 40rem;
+    overflow: hidden;
 }
 
-.vaccination-wrapper .vaccination-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.vaccination-wrapper .card-body {
+.vet-visit-card .card-body {
     padding: 1.5rem;
+}
+
+.vet-visit-card .visit-content {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
+    align-items: flex-start;
 }
 
-.vaccination-wrapper .card-header-row {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.vet-visit-card .pet-image {
+    font-size: 2.5rem;
+    min-width: 60px;
+    text-align: center;
 }
 
-.vaccination-wrapper .pet-image-container {
-    flex-shrink: 0;
-}
-
-.vaccination-wrapper .pet-image {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 0.75rem;
-    object-fit: cover;
-}
-
-.vaccination-wrapper .vaccine-info {
+.vet-visit-card .visit-details {
     flex: 1;
 }
 
-.vaccination-wrapper .vaccine-name {
-    font-weight: 700;
-    font-size: 1rem;
-    margin: 0;
-}
-
-.vaccination-wrapper .pet-name {
-    font-size: 0.875rem;
-    color: #6b7280;
-    margin: 0.25rem 0 0 0;
-}
-
-.vaccination-wrapper .due-info {
-    text-align: right;
-}
-
-.vaccination-wrapper .days-until {
-    font-size: 0.875rem;
-    font-weight: 500;
-}
-
-.vaccination-wrapper .card-footer {
+.vet-visit-card .visit-header {
     display: flex;
     justify-content: space-between;
-    padding-top: 1rem;
-    border-top: 1px solid #e5e7eb;
+    align-items: flex-start;
+    margin-bottom: 1rem;
 }
 
-.vaccination-wrapper .date-section .label {
-    font-size: 0.75rem;
+.vet-visit-card .visit-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.vet-visit-card .pet-name {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0.25rem 0 0 0;
+}
+
+.vet-visit-card .visit-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.vet-visit-card .visit-notes {
+    display: flex;
+    gap: 0.75rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f9fafb;
+    border-radius: 8px;
+}
+
+.vet-visit-card .notes-icon {
+    min-width: 24px;
+    color: #6b7280;
+}
+
+.vet-visit-card .notes-text {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.vet-visit-card .vet-name {
+    font-size: 0.875rem;
     color: #6b7280;
     margin: 0;
 }
 
-.vaccination-wrapper .date-section .date {
-    font-size: 0.875rem;
-    font-weight: 500;
-    margin: 0.25rem 0 0 0;
+.vet-visit-card .visit-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+}
+
+.vet-visit-card .visit-action-btn:hover {
+    color: #0d162f;
 }

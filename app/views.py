@@ -116,6 +116,7 @@ def pet_print_view(request, pet_id):
 # NOTE VET VISIT VIEWS
 @login_required
 def vet_visits_view(request:HttpRequest)->HttpResponse:
+    vaccinations = Vaccination.objects.filter(pet__owner=request.user)
     visit = VetVisit.objects.filter(pet__owner=request.user)
     if request.method == 'POST':
         form = VetVisitForm(request.POST)
@@ -129,7 +130,7 @@ def vet_visits_view(request:HttpRequest)->HttpResponse:
         form = VetVisitForm()
     form.fields["pet"].queryset = Pet.objects.filter(
         owner=request.user)
-    return render(request, 'vetVisits.html', {'visit': visit,'form':form })
+    return render(request, 'vetVisits.html', {'visit': visit,'form':form, 'vaccinations':vaccinations})
 
 @login_required
 def edit_vet_visit_view(request:HttpRequest, visit_id:int)->HttpResponse:
@@ -152,10 +153,6 @@ def delete_vet_visit_view(request: HttpRequest, visit_id) -> HttpResponse:
 @login_required
 def vaccinations_view(request:HttpRequest)-> HttpResponse:
     vaccinations = Vaccination.objects.filter(pet__owner=request.user)
-    upcoming_vaccinations = [
-        v for v in vaccinations
-        if v.next_due_date and (v.next_due_date -  timezone.now().date()).days <= 14
-    ]
     if request.method == 'POST':
         form = VaccinationForm(request.POST)
         if form.is_valid():

@@ -14,7 +14,11 @@
 
 
         <div class="vet-visit-wrapper">
-            
+            <div class='vet-visit-intro-message'>
+                <h1>Health Records</h1>
+                <p>Track vet visits and vaccinations for all your pets.</p>
+            </div>
+
             <div class="upcoming-vaccinations-card">
                 <div class="card-header">
                     <div class="header-content">
@@ -42,8 +46,49 @@
                     </div>
                 </div>
             </div>
+            {% comment %} TODO end of notification card above {% endcomment %}
+
+
+
+{% comment %} TODO - end of vet visit wrapper below {% endcomment %}
         </div>
 
+
+
+
+{% comment %} TODO VET VISITS {% endcomment %}
+<div class="vet-visits-container">
+    {% for v in visit %}
+    <div class="vet-visit-card">
+        <div class="card-body">
+            <div class="visit-content">
+                <div class="pet-image">{{v.pet.image}}</div>
+                <div class="visit-details">
+                    <div class="visit-header">
+                        <div>
+                            <h3 class="visit-title">{{v.reason}}</h3>
+                            <p class="pet-name">{{v.pet.name}}</p>
+                        </div>
+                        <div class="visit-date">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="calendar-icon"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path>
+                            </svg>
+                            {{v.visit_date}}
+                        </div>
+                    </div>
+                    <div class="visit-notes">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="notes-icon"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+                        <p class="notes-text">{{v.description}}</p>
+                    </div>
+                    <p class="vet-name">Attended by {{v.vet_name}}</p>
+                </div>
+                <button class="visit-action-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><path d="m9 18 6-6-6-6"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
     </section>
 
