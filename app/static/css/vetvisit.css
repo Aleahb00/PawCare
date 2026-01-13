@@ -170,27 +170,30 @@
 
 
 
-.vet-visit-wrapper .upcoming-vaccinations-card {
+.upcoming-vaccinations-card {
     border: aqua 1px solid;
     padding: 2%;
     border-radius: 20px;
+    display: grid;
+    margin-bottom: 5rem;
+    top: 0;
 }
 
-.vet-visit-wrapper .vaccination-tags {
+.vaccination-tags {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5rem;
 }
 
 
-.vet-visit-wrapper .header-content {
+.header-content {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: .5rem;
 }
 
-.vet-visit-wrapper .upcoming-vaccinations-card .due-badge {
+.upcoming-vaccinations-card .due-badge {
     padding: 2px 8px;
     font-family: Inter, system-ui, sans-serif;
     font-size: 12px;

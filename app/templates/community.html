@@ -15,11 +15,30 @@
             <span><a href="javascript:history.back()" class="box">Go Back</a></span>
         </button>
 
+        <button id="openFormButton">+ Add New Visit</button>
+
+
         <div class="community-wrapper">
             <div class='community-intro-message'>
                 <h1>Community</h1>
                 <p>Share experiences and get advice from fellow pet parents.</p>
             </div>
+
+            <div id="formModal" class="modal" enctype="multipart/form-data">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+
+                    <h2 class='heading'>Form Title</h2>
+                    <hr></hr>
+                    <form method="POST" class='form'>
+                    {% csrf_token %}
+                    {{field.label_tag}}
+                    {{ form.as_p }}
+                    <button type="submit" class='login-button'>Post</button>
+                    </form>
+                </div>
+            </div>
+
         
 
         <form method="GET" class='input-container'>
