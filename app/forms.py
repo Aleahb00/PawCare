@@ -111,9 +111,11 @@ class CommunityPostForm(forms.ModelForm):
         fields = ['title', 'content']
         widgets = {
             'title': forms.TextInput(attrs={
+                'class':'input',
                 'placeholder': 'Post Title'
             }),
             'content': forms.Textarea(attrs={
+                'class':'post-input',
                 'placeholder': 'Write your post here...'
             }),
         }

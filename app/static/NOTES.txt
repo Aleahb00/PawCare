@@ -1,1 +1,0 @@
-!designed skeleton for register and login page done- still need to be tailored
