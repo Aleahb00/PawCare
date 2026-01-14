@@ -276,6 +276,14 @@
         visibility: visible;
     }
 
+    .pet-info-card button, .pet-info-card button * {
+        visibility: hidden;
+    }
+
+    .pet-info-card a, .pet-info-card a * {
+        visibility: hidden;
+    }
+
     /* Position the card at the top-left */
     .pet-info-card {
         position: absolute;
