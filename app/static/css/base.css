@@ -91,6 +91,11 @@ input {
     font-family: "Overpass", sans-serif;
 }
 
+textarea {
+    font-size: 16px;
+    font-family: "Overpass", sans-serif;
+}
+
 
 
 @media (max-width: 480px) {
