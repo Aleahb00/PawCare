@@ -312,6 +312,13 @@
     float: inline-end;
 }
 
+.pet-image-container .selected-pet {
+    width: 60px;      /* fixed width */
+    height: 60px;     /* fixed height */
+    object-fit: cover; /* crops to fill the box without stretching */
+    border-radius: 12px; /* optional rounded corners */
+    margin-bottom: 1rem; /* spacing below the image */
+}
 
 
 /* RESPONSIVENESS */

@@ -237,6 +237,14 @@
     margin-right: 10px; /* spacing if next to text */
 }
 
+.pet-info-card .selected-pet {
+    width: 60px;      /* fixed width */
+    height: 60px;     /* fixed height */
+    object-fit: cover; /* crops to fill the box without stretching */
+    border-radius: 12px; /* optional rounded corners */
+    margin-bottom: 1rem; /* spacing below the image */
+}
+
 
 .allergy-section {
     border: solid 1px #2563f5;
@@ -255,5 +263,30 @@
     border-radius: 10px;
     cursor: pointer;
     font-size: 1rem;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .pet-info-card, .pet-info-card * {
+        visibility: visible;
+    }
+
+    /* Position the card at the top-left */
+    .pet-info-card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%; 
+    }
+
+    /* Optional: remove float on image for printing */
+    .pet-info-card img.selected-pet {
+        float: none;
+        display: block;
+        margin: 0 auto 1rem auto;
+    }
 }
 

@@ -105,8 +105,9 @@ def delete_pet_view(request: HttpRequest, pet_id) -> HttpResponse:
 
 @login_required
 def pet_print_view(request, pet_id):
-    pet = Pet.objects.filter(id=pet_id).delete()
+    pet = get_object_or_404(Pet, id=pet_id)
     return render(request, 'pets.html', {'pet': pet})
+
 
 
 # NOTE VET VISIT VIEWS

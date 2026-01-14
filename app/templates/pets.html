@@ -63,7 +63,9 @@
             <div class="pet-right-side">
                 <div class="pet-info-card">
                     {% if selected_pet %}
-                        <p>{{selected_pet.iamge}}</p>
+                        {% if selected_pet.image %}
+                            <img style="float: right;" src="{{ selected_pet.image.url }}" alt="{{ selected_pet.name }}" class="selected-pet">
+                        {% endif %}
                         <h1>{{ selected_pet.name }}</h3>
 
                         <p style="font-size: 1.2rem; color: gray;">{{ selected_pet.species }}  • {{selected_pet.breed}} • {{ selected_pet.age }} yrs</p>
