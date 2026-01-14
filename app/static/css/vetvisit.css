@@ -112,6 +112,8 @@
     box-sizing: border-box;
     max-height: 3rem;
     border: #000 .5px solid;
+    font-size: 16px;
+    font-family: "Overpass", sans-serif;
 }
 
 .form .input::-moz-placeholder {
