@@ -259,22 +259,6 @@ def logout_view(request:HttpRequest)->HttpResponse:
 
 
 # NOTE EXTRA VIEWS (TO BE REMOVED UPON COMPLETION)
-# def download_pdf(request):
-#     # Fetch data
-#     pets = Pet.objects.filter(owner=request.user)
-#     context = {'pets': pets}
-#     template = get_template('pets.html')
-#     html = template.render(context)
-
-#     response = HttpResponse(content_type='application/pdf')
-#     response['Content-Disposition'] = 'attachment; filename="report.pdf"'
-
-#     pisa_status = pisa.CreatePDF(html, dest=response) # For xhtml2pdf
-
-#     if pisa_status.err:
-#         return HttpResponse('Error generating PDF', status=500)
-
-#     return response
 
 
 
