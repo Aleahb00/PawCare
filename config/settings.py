@@ -32,9 +32,8 @@ SECRET_KEY = 'django-insecure-x!s%%)3xzv*@tpdbjc8lzecd&4p4083=cyie#6zjk$r7l2_w++
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+ALLOWED_HOSTS = ['pawcare-6929f3f7f1c0.herokuapp.com']
 
-print("ALLOWED_HOSTS:", ALLOWED_HOSTS)
 
 
 
