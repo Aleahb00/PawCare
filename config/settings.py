@@ -34,6 +34,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
 
+print("ALLOWED_HOSTS:", ALLOWED_HOSTS)
+
+
 
 # Application definition
 
