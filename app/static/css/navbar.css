@@ -128,33 +128,39 @@
 
 /* Mobile styles */
 @media (max-width: 768px) {
-    /* Show hamburger */
-    .navbar-wrapper .hamburger {
-        display: flex;
-    }
+.nav-bar {
+  background-color: #333; /* Dark background color */
+  overflow: hidden;
+  position: fixed; /* Fixes the bar to the bottom */
+  bottom: 0;
+  width: 100%; /* Full width */
+  display: flex; /* Use flexbox for even distribution */
+  justify-content: space-around; /* Space items evenly */
+  height: 56px; /* Recommended height for mobile nav bars */
+}
 
-    /* Hide everything except hamburger */
-    .navbar-wrapper .nav-bar > *:not(.hamburger) {
-        display: none;
-        width: 100%;
-        text-align: center;
-        margin: 6px 0;
-    }
+.nav-bar a {
+  flex-grow: 1; /* Allows each link to grow and fill available space */
+  display: flex;
+  flex-direction: column; /* Stacks icon and text vertically */
+  justify-content: center;
+  align-items: center;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 8px 0; /* Adjust padding as needed */
+  text-decoration: none;
+  font-size: 12px; /* Smaller font size for mobile labels */
+  white-space: nowrap; /* Prevents text wrapping */
+}
 
-    /* Show everything when open */
-    .navbar-wrapper .nav-bar.open > *:not(.hamburger) {
-        display: block;
-    }
+.nav-bar a:hover {
+  background-color: #ddd;
+  color: black;
+}
 
-    /* Stack vertically */
-    .navbar-wrapper .nav-bar {
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-    }
+.nav-bar a.active {
+  background-color: #04AA6D; /* Color for the active/current link */
+  color: white;
+}
 
-    .navbar-wrapper .dropdown-content {
-        width: 100%;
-        position: relative !important;
-    }
 }
