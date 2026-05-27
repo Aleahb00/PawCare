@@ -249,6 +249,9 @@ def delete_comment_view(request:HttpRequest, comment_id:int)->HttpResponse:
 def error_view(request:HttpRequest)->HttpResponse:
     return render(request, '403.html', status=403)
 
+def csrf_failure_view(request, reason=""):
+    return render(request, '403.html', status=403)
+
 # NOTE LOGOUT VIEW 
 @login_required
 def logout_view(request:HttpRequest)->HttpResponse:
