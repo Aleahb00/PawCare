@@ -1,1 +1,1 @@
-web: gunicorn Django-Unit-2-Project.wsgi
+web: gunicorn pawcare.wsgi
