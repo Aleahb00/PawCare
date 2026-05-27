@@ -102,4 +102,9 @@ textarea {
     body {
         margin-top: 15rem;
     }
+
+    .content-wrapper {
+        margin-top: 205rem;
+    }
+
 }

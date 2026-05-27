@@ -313,11 +313,11 @@
 }
 
 .pet-image-container .selected-pet {
-    width: 60px;      /* fixed width */
-    height: 60px;     /* fixed height */
-    object-fit: cover; /* crops to fill the box without stretching */
-    border-radius: 12px; /* optional rounded corners */
-    margin-bottom: 1rem; /* spacing below the image */
+    width: 60px; 
+    height: 60px;
+    object-fit: cover;
+    border-radius: 12px; 
+    margin-bottom: 1rem;
 }
 
 
@@ -331,6 +331,17 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
         row-gap: 4rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .vaccination-wrapper {
+        margin-top: 250rem;
+    }
+
+    .box {
+        margin-top: 25rem;
     }
 }
 
