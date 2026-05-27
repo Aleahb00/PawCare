@@ -1,1 +1,1 @@
-web: gunicorn pawcare.wsgi
+web: gunicorn app.wsgi
