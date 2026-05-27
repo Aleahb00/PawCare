@@ -26,14 +26,14 @@ editSpan.onclick = function() {
 
 
 // HAMBURGER MENU JS
-document.addEventListener("DOMContentLoaded", function() {
-    const hamburger = document.querySelector(".navbar-wrapper .hamburger");
-    const navBar = document.querySelector(".navbar-wrapper .nav-bar");
+// document.addEventListener("DOMContentLoaded", function() {
+//     const hamburger = document.querySelector(".navbar-wrapper .hamburger");
+//     const navBar = document.querySelector(".navbar-wrapper .nav-bar");
 
-    hamburger.addEventListener("click", () => {
-        navBar.classList.toggle("open");
-    });
-});
+//     hamburger.addEventListener("click", () => {
+//         navBar.classList.toggle("open");
+//     });
+// });
 
 
 
