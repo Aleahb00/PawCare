@@ -1,0 +1,145 @@
+/* LOGIN WRAPPER */
+.login-wrapper{
+    display:flex; 
+    flex-direction:column; 
+    align-items:center; 
+    justify-content:center; 
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+
+
+
+/* INTRODUCTORY WORDS */
+.login-wrapper .intro img{
+    width: 5%;
+}
+
+.login-wrapper .intro{
+    line-height: 1.5rem;
+}
+
+.login-wrapper .intro h1{
+    font-size: 2rem;
+}
+
+.login-wrapper .intro h2{
+    font-size: 1.5rem;
+}
+
+
+
+
+/* OFFICIAL FORM */
+.login-wrapper .card {
+    width: 30%;
+    padding: 2rem 8rem;
+    text-align: center;
+    background: #fff;
+    border-radius: 40px;
+    border: #000 solid 1px;
+    box-shadow: #000 5px 15px 5px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.login-wrapper .field {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+    border-radius: 4px;
+    padding: 1em 1em;
+    border: #000 solid 1px;
+    min-height: 1rem;
+    border: #000000 solid 1px;
+    box-shadow: 0 0 10px #000fe7a2;
+}
+
+.login-wrapper label {
+    line-height: 1;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 22px;
+    color: #000;
+}
+
+
+.login-wrapper .input-icon {
+    height: 1em;
+    width: 1em;
+    fill: #000;
+}
+
+.login-wrapper .input-field {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #010000;
+
+}
+
+.login-wrapper .title {
+    margin-bottom: 1rem;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #000;
+}
+
+.login-wrapper .btn {
+    margin: 4rem;
+    margin-bottom: 2rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+    padding: 1rem 5em;
+    background-image: linear-gradient(to right, #0095ffa8, #000fe7);
+    color: #080e22;
+    box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%);
+    transition: all .3s ease-in-out;
+    align-self: center;
+}
+
+.login-wrapper .btn-link {
+    color: #f5f5f5;
+    display: block;
+    font-size: .75em;
+    transition: color .3s ease-out;
+}
+
+.login-wrapper .field input:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.login-wrapper .btn:hover {
+    background-color: #5e6681;
+    color: #ffeba7;
+    box-shadow: 0 8px 24px 0 rgb(16 39 112 / 20%);
+}
+
+.login-wrapper .btn-link:hover {
+    color: #ffeba7;
+}
+
+.login-wrapper .btn-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+/* EXTRA */
+.login-wrapper a{
+    color: #000;
+    display: inline-block
+}

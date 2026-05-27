@@ -1,0 +1,779 @@
+/* NOTE COMMUNITY WRAPPER */
+.community-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+
+
+/* NOTE INTRO MSG */
+.community-wrapper .community-intro-message {
+    line-height: 1rem;
+}
+
+
+.community-wrapper .community-intro-message h1{
+    font-size: 38px;
+}
+
+.community-wrapper .community-intro-message p {
+    font-size: 18px;
+}
+
+
+
+
+.community-wrapper .modal {
+    display: none; 
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4); 
+    overflow: auto;
+
+
+}
+
+.community-wrapper .modal-content {
+    background-color: #e5f8fc;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+    max-width: 500px;
+    border-radius: 5px;
+}
+
+.community-wrapper .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.community-wrapper .close:hover,
+.community-wrapper .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+/* NOTE FORM STYLING CSS */
+.form-style {
+    max-width: 350px;
+    background: #F8F9FD;
+    background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(244, 247, 251) 100%);
+    border-radius: 40px;
+    padding: 25px 35px;
+    border: 5px solid rgb(255, 255, 255);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+    margin: 20px;
+}
+
+.heading {
+    text-align: center;
+    font-weight: 900;
+    font-size: 30px;
+    color: rgb(16, 137, 211);
+}
+
+.form {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    scrollbar-width: none;
+}
+
+.form label {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.input {
+    color: black;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: #cff0ff 0px 10px 10px -5px;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 3rem;
+    border: #000 .5px solid;
+    font-size: 16px;
+    font-family: "Overpass", sans-serif;
+}
+
+.post-input {
+    color: black;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: #cff0ff 0px 10px 10px -5px;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 10rem;
+    border: #000 .5px solid;
+}
+
+.form .input::-moz-placeholder {
+    color: #000;
+}
+
+.form .input::placeholder {
+    color: #000;
+}
+
+.form .input:focus {
+    outline: none;
+    border: 2px solid #12B1D1;
+}
+
+.form .login-button {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
+    color: white;
+    padding-block: 15px;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.form .login-button:hover {
+    transform: scale(1.03);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
+}
+
+.form .login-button:active {
+    transform: scale(0.95);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
+}
+
+#openFormButton {
+    margin-right: 5rem;
+    float: right;
+    padding: 0.6rem 1.2rem;
+    background-image: linear-gradient(to right, #0095ffa8, #000fe7);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+
+
+
+/* NOTE SEARCH CSS */
+.input-container {
+    display: flex;
+    border-radius: 1rem;
+    box-shadow: 20px 20px 20px #d8d8d8,-10px -10px 20px #f8f8f8;
+    padding: 0.3rem;
+    gap: 0.3rem;
+    margin-bottom: 2.5rem;
+    opacity: 70%;
+}
+
+
+.input-container input {
+    border-radius: 0.8rem 0 0 0.8rem;
+    background: #e8e8e8;
+    box-shadow: inset 13px 13px 10px #dcdcdc,
+                inset -13px -13px 10px #f4f4f4;
+    width: 100%;
+    flex-basis: 75%;
+    padding: 1rem;
+    border: none;
+    border-left: 2px solid #4998FF;
+    color: #5e5e5e;
+    transition: all 0.2s ease-in-out;
+
+}
+
+
+.input-container input:focus {
+    border-left: 2px solid #4998FF;
+    outline: none;
+    box-shadow: inset 13px 13px 10px #BFF0FA,inset -13px -13px 10px #f4f4f4;
+}
+
+
+.input-container button {
+    flex-basis: 25%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #BFF0FA 0%, #4998FF 100%);
+    font-weight: 900;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    width: 100%;
+    border-radius: 0 1rem 1rem 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.input-container button:hover {
+    background: linear-gradient(to right, #0095ffa8, #000fe7);
+}
+
+    @media (max-width: 500px) {
+    .input-container {
+        flex-direction: column;
+    }
+
+    .input-container input {
+        border-radius: 0.8rem;
+    }
+
+    .input-container button {
+        padding: 1rem;
+        border-radius: 0.8rem;
+    }
+    }
+
+
+
+
+/* NOTE POST CSS */
+.post-card {
+    background-color: #fff;
+    width: 60rem;
+    padding: 1.5rem;
+    max-width: 60rem;
+    min-width: 45rem;
+    margin: 0 auto 2rem;
+    box-shadow: 10px 10px 10px #d8d8d8,-10px -10px 20px #f8f8f8;
+    border: #fff 1px solid;
+    position: relative;
+    border-radius: 20px;
+}
+
+a svg {
+    color: #000;
+}
+
+
+/* TODO CHANGE STYLE */
+.post-card:hover {
+    border-image:linear-gradient(135deg, #BFF0FA 0%, #4998FF 100%) 1;
+    border-radius: 0;
+}
+
+.post-header {
+    margin-bottom: 1rem;
+}
+
+.post-main {
+    text-align: left;
+}
+
+.post-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 13px;
+    color: #505256;
+    width: fit-content;
+}
+
+.post-meta .username {
+    color: #000;
+    font-size: 18px;
+}
+
+.post-title {
+    font-size: 22px;
+    color: #000;
+    margin: 0.75rem 0;
+}
+
+.post-time {
+    color: #000;
+}
+
+.community-wrapper .options svg {
+    width: 20px;
+}
+
+.post-description {
+    font-size: 16px;
+    color: #000;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.post-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.post-tags .tag {
+    background-color: #f0f0f0;
+    color: #2e2e2f;
+    padding: 0.35rem 0.75rem;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.post-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* TODO style button like on landing page */
+.action-btn {
+    text-align: center;
+    background: transparent;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: .5rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 900;
+    transition: all 0.2s ease-in-out;
+    color:black;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.action-btn:hover {
+    border-color: blue;
+}
+
+.action-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.options{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 2.5%;
+}
+
+
+
+
+
+
+
+
+/* ANCHOR POST DETAILS */
+.post-details-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 45rem;
+    padding: 1rem;
+    align-self: center;
+    align-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.card {
+    width: 600px;
+    height: fit-content;
+    background-color: white;
+    box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 17px 17px 27px 27px;
+    padding: 1.5rem;
+}
+
+.title {
+    justify-content: center;
+    width: 100%;
+    height: 70px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    border-bottom: 1px solid #f1f1f1;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.title::after {
+    content: '';
+    width: 8ch;
+    height: 1px;
+    position: absolute;
+    bottom: -1px;
+}
+
+.reply-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 1.5rem 0;
+    margin: 0;
+}
+
+.reply-container .user {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 15px;
+}
+
+
+
+.reply-container .user .user-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+}
+
+.reply-container .user .user-info span {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.reply-container .user .user-info p {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.reply-container .reply-content {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.text-box {
+    height: fit-content;
+    background-color: #f1f1f1;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-box .box-container {
+    background-color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.text-box textarea {
+    width: 100%;
+    height: 4rem;
+    resize: none;
+    border: 0;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    caret-color: #0a84ff;
+    padding: 2%;
+    box-sizing: border-box;
+    
+}
+
+.text-box .formatting {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.text-box .formatting button {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 0;
+    outline: none;
+}
+
+.text-box .formatting button:hover {
+    background-color: #f1f1f1;
+}
+
+.text-box .formatting .send {
+    width: 30px;
+    height: 30px;
+    background-color: #0a84ff;
+}
+
+.text-box .formatting .send:hover {
+    background-color: #026eda;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/* ANCHOR COMMENTS SECTION */
+.comment-section{
+    background: white;
+    height: 20rem;
+    padding: 1.5rem;
+    padding-top: 0;
+    align-self: center;
+    top: 0;
+    margin-bottom: 2%;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.comments-title-section{
+    position: sticky;
+    background-color: white;
+    top: 0;
+    margin-bottom: 5%;
+}
+
+.comments-title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 1.5rem;
+    padding-left: 20px;
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.comment-item {
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    padding: 2%;
+    border: #c5c5c5 .5px solid;
+}
+
+.comment-item .user {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.comment-item .user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.comment-item .user-info span {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.comment-item .user-info p {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.comment-item .reply-content {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 600;
+    text-align: left;
+    padding: 0;
+}
+
+.no-replies {
+    text-align: center;
+    font-size: 14px;
+    padding: 2rem 1.5rem;
+    font-style: italic;
+} 
+
+
+.delete-btn {
+    float: right;
+    margin-left: 5rem;
+}
+
+
+
+
+
+.delete-button {
+    float: right;
+}
+/* NOTE MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .community-wrapper {
+        padding: 1rem;
+    }
+
+    .community-wrapper .community-intro-message h1 {
+        font-size: 28px;
+    }
+
+    .community-wrapper .community-intro-message p {
+        font-size: 16px;
+    }
+
+    .community-wrapper .modal-content {
+        width: 90%;
+        margin: 20% auto;
+        padding: 15px;
+    }
+
+    .form-style {
+        max-width: 90%;
+        padding: 20px 25px;
+    }
+
+    #openFormButton {
+        margin-right: 1rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .post-card {
+        width: 90%;
+        min-width: auto;
+        padding: 1rem;
+        margin: 0 auto 1.5rem;
+    }
+
+    .post-details-wrapper {
+        max-width: 90%;
+        padding: 0.5rem;
+    }
+
+    .card {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .input-container {
+        margin-bottom: 1.5rem;
+    }
+
+    .comment-section {
+        height: 15rem;
+    }
+
+    .reply-container .user {
+        grid-template-columns: 50px 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-wrapper {
+        margin-top: 15rem;
+    }
+    .community-wrapper .community-intro-message h1 {
+        font-size: 22px;
+    }
+
+    .community-wrapper .community-intro-message p {
+        font-size: 14px;
+    }
+
+    .form-style {
+        max-width: 100%;
+        padding: 15px 20px;
+        margin: 10px;
+    }
+
+    .heading {
+        font-size: 24px;
+    }
+
+    .post-card {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    .post-title {
+        font-size: 18px;
+    }
+
+    .post-description {
+        font-size: 14px;
+    }
+
+    .action-btn {
+        font-size: 12px;
+        padding: 0.4rem;
+    }
+
+    #openFormButton {
+        margin-right: 0.5rem;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .card {
+        border-radius: 12px;
+    }
+
+    .title {
+        height: 60px;
+        font-size: 18px;
+        padding-left: 15px;
+    }
+
+    .comment-section {
+        height: 12rem;
+        padding: 1rem;
+    }
+
+    .reply-container .reply-content {
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    .input-container input{
+        width: 10px;
+    }
+}
