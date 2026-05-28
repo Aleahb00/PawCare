@@ -13,17 +13,17 @@
    - Print out a pet's information.
 
  2. **Community:**
-   - Users can acces the community chat that is open to the public for anyone that 
-   has a quetion can ask in the community and can slo search if someone has had that problem.
-   - User can comment on other's post.
+   - Users can access the community chat that is open to the public for anyone that 
+   has a question can ask in the community and can also search if someone has had that problem.
+   - User can comment on others' posts.
   
  3. **Health Records**
-   - Add, edit, and delete veterenary visits.
+   - Add, edit, and delete veterinary visits.
    - Add, edit, and delete vaccinations.
-   - Show a remainder of when your pet's next vaccination is.
+   - Show a reminder of when your pet's next vaccination is.
   
 ## **Inspiration** ##
-   - We created PawCare to help people who struggle with staying organized about the pets's information. 
+   - We created PawCare to help people who struggle with staying organized about their pet's information. 
 
 ## **HOW TO USE (Visual Studio Code)**
   1. Install Python to your computer.
@@ -35,4 +35,4 @@
   7. Install Widget Tweak [pip install django-widget-tweaks]
   8. Install Image Field [pip install django-imagefield]
   9. Make migrations and migrate [python3 manage.py makemigrations] [python3 manage.py migrate]
-  10.Start running the Server [python3 runserver] and you are all set!
+  10. Start running the server [python3 manage.py runserver] and you are all set!
