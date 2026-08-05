@@ -54,8 +54,13 @@ class PetSerializer(serializers.ModelSerializer):
             return None
         if obj.owner_id == request.user.id:
             return 'owner'
-        access = obj.caregivers.filter(caregiver=request.user).first()
-        return access.permission if access else None
+        # `my_caregiver_access` is prefetched (scoped to the current user)
+        # by PetViewSet.get_queryset — avoids an extra query per pet.
+        access_list = getattr(obj, 'my_caregiver_access', None)
+        if access_list is None:
+            access = obj.caregivers.filter(caregiver=request.user).first()
+            return access.permission if access else None
+        return access_list[0].permission if access_list else None
 
 
 class VetVisitSerializer(serializers.ModelSerializer):
@@ -135,7 +140,15 @@ class CommentSerializer(serializers.ModelSerializer):
 class CommunityPostSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
     comments = CommentSerializer(many=True, read_only=True)
-    comment_count = serializers.IntegerField(source='comments.count', read_only=True)
+    # Populated by the `.annotate(comment_count=Count('comments'))` on
+    # CommunityPostViewSet's queryset — falls back to a live count for any
+    # other caller (e.g. serializing a single unannotated instance).
+    comment_count = serializers.SerializerMethodField()
+
+    def get_comment_count(self, obj):
+        if hasattr(obj, 'comment_count') and isinstance(obj.comment_count, int):
+            return obj.comment_count
+        return obj.comments.count()
 
     class Meta:
         model = CommunityPost

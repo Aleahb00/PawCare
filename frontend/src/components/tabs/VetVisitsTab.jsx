@@ -11,7 +11,10 @@ export default function VetVisitsTab({ petId, canEdit }) {
   const [form, setForm] = useState(emptyForm);
 
   const load = () => vetVisitsApi.list(petId).then((res) => setVisits(res.data.results ?? res.data));
-  useEffect(() => { load(); }, [petId]);
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [petId]);
 
   const update = (field) => (e) => setForm({ ...form, [field]: e.target.value });
 

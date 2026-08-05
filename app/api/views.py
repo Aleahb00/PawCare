@@ -1,10 +1,9 @@
 from datetime import timedelta
 
 from django.contrib.auth.models import User
-from django.db.models import Q
+from django.db.models import Count, Prefetch, Q
 from django.utils import timezone
-from rest_framework import viewsets, generics, permissions, filters, status
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework import viewsets, generics, permissions, filters
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -38,7 +37,17 @@ class PetViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated, IsPetOwnerOrCaregiver]
 
     def get_queryset(self):
-        return _accessible_pets(self.request.user)
+        user = self.request.user
+        # Only prefetch *this* user's caregiver record per pet (not every
+        # caregiver on the pet) so PetSerializer.get_my_permission doesn't
+        # issue an extra query per pet.
+        return _accessible_pets(user).select_related('owner').prefetch_related(
+            Prefetch(
+                'caregivers',
+                queryset=CaregiverAccess.objects.filter(caregiver=user),
+                to_attr='my_caregiver_access',
+            )
+        )
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -92,7 +101,9 @@ class CaregiverAccessViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         # Only the pet's owner manages who has access to it.
-        return CaregiverAccess.objects.filter(pet__owner=self.request.user)
+        return CaregiverAccess.objects.filter(
+            pet__owner=self.request.user
+        ).select_related('pet', 'caregiver')
 
     def perform_create(self, serializer):
         pet = serializer.validated_data.get('pet')
@@ -102,7 +113,16 @@ class CaregiverAccessViewSet(viewsets.ModelViewSet):
 
 
 class CommunityPostViewSet(viewsets.ModelViewSet):
-    queryset = CommunityPost.objects.all().order_by('-created_at')
+    # comment_count is annotated (single COUNT via JOIN) instead of the
+    # serializer calling `comments.count` per post, and comments/authors
+    # are prefetched so rendering the nested comment list is O(1) queries.
+    queryset = (
+        CommunityPost.objects.all()
+        .select_related('author')
+        .prefetch_related(Prefetch('comments', queryset=Comment.objects.select_related('author')))
+        .annotate(comment_count=Count('comments'))
+        .order_by('-created_at')
+    )
     serializer_class = CommunityPostSerializer
     permission_classes = [permissions.IsAuthenticated, IsOwner]
     filter_backends = [filters.SearchFilter]
@@ -118,7 +138,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     filterset_fields = ['post']
 
     def get_queryset(self):
-        return Comment.objects.all().order_by('created_at')
+        return Comment.objects.select_related('author', 'post').order_by('created_at')
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)

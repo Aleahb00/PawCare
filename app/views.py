@@ -2,17 +2,20 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http.response import HttpResponse
 from django.http.request import HttpRequest
 from django.contrib.auth import authenticate, login, logout
-from django.utils import timezone
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.decorators import *
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
-from .models import *
-from .forms import *
-from django.template.loader import get_template
-# from xhtml2pdf import pisa 
-# from .functions import *
+from .models import Pet, VetVisit, Vaccination, CommunityPost, Comment
+from .forms import (
+    RegistrationForm,
+    PetForm,
+    VetVisitForm,
+    VaccinationForm,
+    CommunityPostForm,
+    CommentForm,
+)
 
 
 # Create your views here.
@@ -70,8 +73,6 @@ def pets_view(request: HttpRequest) -> HttpResponse:
             return redirect('pets')
 
     return render(request, 'pets.html', {'pets': pets,'form': form,'selected_pet': selected_pet})
-
-    # return render(request, 'pets.html', {'pets': pets,'form': form,'selected_pet': selected_pet})
 
 
 # NOTE VIEWS FOR ALL PET ACTIONS
@@ -253,16 +254,9 @@ def error_view(request:HttpRequest)->HttpResponse:
 def csrf_failure_view(request, reason=""):
     return render(request, '403.html', status=403)
 
-# NOTE LOGOUT VIEW 
+# NOTE LOGOUT VIEW
 @login_required
 def logout_view(request:HttpRequest)->HttpResponse:
     logout(request)
     return redirect('landing')
-
-
-
-
-# NOTE EXTRA VIEWS (TO BE REMOVED UPON COMPLETION)
-
-
 

@@ -1,13 +1,17 @@
 from datetime import timedelta
 
 from django.contrib.auth.models import User
+from django.db import connection
 from django.test import TestCase
-from django.urls import reverse
+from django.test.utils import CaptureQueriesContext
 from django.utils import timezone
 from rest_framework.test import APIClient
 from rest_framework import status
 
-from .models import Pet, VetVisit, Vaccination, Medication, CaregiverAccess
+from .models import (
+    Pet, VetVisit, Vaccination, Medication, CaregiverAccess,
+    CommunityPost, Comment,
+)
 
 
 class ModelTests(TestCase):
@@ -169,3 +173,61 @@ class RegistrationApiTests(TestCase):
             'password': 'S0meStrongPass!',
         }, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+
+class QueryCountRegressionTests(TestCase):
+    """
+    Guards against N+1 regressions on list endpoints: the number of queries
+    for listing N objects should stay flat as N grows, not scale linearly.
+    """
+
+    def setUp(self):
+        self.owner = User.objects.create_user(username='owner', password='pass12345')
+        self.client = APIClient()
+        self.client.force_authenticate(self.owner)
+
+    def _query_count_for_n_pets(self, n, prefix):
+        for i in range(n):
+            pet = Pet.objects.create(owner=self.owner, name=f'Pet{i}', species='Dog')
+            sitter = User.objects.create_user(username=f'{prefix}{i}', password='pass12345')
+            CaregiverAccess.objects.create(
+                pet=pet, caregiver=sitter, permission=CaregiverAccess.Permission.VIEW_ONLY,
+            )
+        with CaptureQueriesContext(connection) as ctx:
+            response = self.client.get('/api/pets/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data['results']), n)
+        return len(ctx.captured_queries)
+
+    def test_pet_list_query_count_does_not_scale_with_pet_count(self):
+        queries_for_2 = self._query_count_for_n_pets(2, prefix='sitterA')
+        Pet.objects.all().delete()
+        queries_for_6 = self._query_count_for_n_pets(6, prefix='sitterB')
+        self.assertEqual(
+            queries_for_2, queries_for_6,
+            "Listing pets should use a fixed number of queries regardless of "
+            "how many pets/caregivers exist (owner + caregiver access should "
+            "be select_related/prefetch_related, not queried per pet)."
+        )
+
+    def _query_count_for_n_posts(self, n):
+        for i in range(n):
+            post = CommunityPost.objects.create(author=self.owner, title=f'Post {i}', content='hi')
+            Comment.objects.create(post=post, author=self.owner, content='first comment')
+        with CaptureQueriesContext(connection) as ctx:
+            response = self.client.get('/api/community/posts/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data['results']), n)
+        return len(ctx.captured_queries)
+
+    def test_community_post_list_query_count_does_not_scale_with_post_count(self):
+        queries_for_2 = self._query_count_for_n_posts(2)
+        CommunityPost.objects.all().delete()
+        queries_for_6 = self._query_count_for_n_posts(6)
+        self.assertEqual(
+            queries_for_2, queries_for_6,
+            "Listing community posts should use a fixed number of queries "
+            "regardless of post/comment count (author + comments should be "
+            "select_related/prefetch_related, and comment_count annotated "
+            "rather than counted per post)."
+        )

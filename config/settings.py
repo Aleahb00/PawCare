@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'widget_tweaks',
-    'imagefield',
 
     # API stack
     'rest_framework',
@@ -144,7 +143,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 CSRF_FAILURE_VIEW = 'app.views.csrf_failure_view'
-CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app', 'https://*.railway.app']
+CSRF_TRUSTED_ORIGINS = config(
+    'CSRF_TRUSTED_ORIGINS',
+    default='https://*.onrender.com,https://*.up.railway.app,https://*.railway.app',
+    cast=lambda v: [o.strip() for o in v.split(',') if o.strip()]
+)
 
 
 # Default primary key field type

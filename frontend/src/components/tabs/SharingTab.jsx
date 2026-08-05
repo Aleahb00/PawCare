@@ -13,7 +13,10 @@ export default function SharingTab({ petId }) {
     const all = res.data.results ?? res.data;
     setAccess(all.filter((a) => a.pet === petId));
   });
-  useEffect(() => { load(); }, [petId]);
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [petId]);
 
   const handleAdd = async (e) => {
     e.preventDefault();

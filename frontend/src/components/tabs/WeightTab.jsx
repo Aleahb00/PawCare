@@ -15,7 +15,10 @@ export default function WeightTab({ petId, canEdit }) {
     const data = res.data.results ?? res.data;
     setRecords([...data].sort((a, b) => a.recorded_date.localeCompare(b.recorded_date)));
   });
-  useEffect(() => { load(); }, [petId]);
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [petId]);
 
   const update = (field) => (e) => setForm({ ...form, [field]: e.target.value });
 

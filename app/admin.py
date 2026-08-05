@@ -1,5 +1,15 @@
 from django.contrib import admin
-from .models import *
+from .models import (
+    Pet,
+    VetVisit,
+    Vaccination,
+    Medication,
+    WeightRecord,
+    Document,
+    CommunityPost,
+    Comment,
+    CaregiverAccess,
+)
 
 # Register your models here.
 admin.site.register(Pet)

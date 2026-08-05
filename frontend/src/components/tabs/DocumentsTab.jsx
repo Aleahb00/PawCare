@@ -15,7 +15,10 @@ export default function DocumentsTab({ petId, canEdit }) {
   const [file, setFile] = useState(null);
 
   const load = () => documentsApi.list(petId).then((res) => setDocs(res.data.results ?? res.data));
-  useEffect(() => { load(); }, [petId]);
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [petId]);
 
   const update = (field) => (e) => setForm({ ...form, [field]: e.target.value });
 
