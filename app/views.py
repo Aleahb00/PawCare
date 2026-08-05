@@ -75,6 +75,7 @@ def pets_view(request: HttpRequest) -> HttpResponse:
 
 
 # NOTE VIEWS FOR ALL PET ACTIONS
+@login_required
 def add_pet_view(request:HttpRequest)->HttpResponse:
     if request.method == 'POST':
         form = PetForm(request.POST)

@@ -1,38 +1,59 @@
 <div align="center">
-  <img style="width: 30%;" src="app/static/images/paws-icon.png" alt="project image">  
-  
+  <img style="width: 30%;" src="app/static/images/paws-icon.png" alt="project image">
+
   # **PawCare**
-  "Pawcare" is a program that helps the user stay organized with their pet's information. Allowing them to manage their pet's Veterinary Visits and even vaccinations. If they are leaving their pet with a petsitter the user can print out their pet's information for the sitter to know all the care instructions and routines. 
+  PawCare is a web app that helps pet owners keep every part of their pet's care organized in one place — profiles, vaccinations, vet visits, medications, weight history, and documents — instead of relying on paper records or memory. Owners can also share a pet's profile with family members or a sitter, and ask/answer questions in a community board.
 
 </div>
 
-## **KEY FEATURES:**
+## **Tech stack**
 
- 1. **Pet Profiles:**
-   - Create a pet profile and put their information in there to stay organized.
-   - Print out a pet's information.
+- **Backend:** Django 5 + Django REST Framework, JWT auth (`simplejwt`)
+- **Database:** PostgreSQL in production, SQLite for local development
+- **Frontend:** React (Vite) + Tailwind CSS, consuming the Django REST API
+- **Testing:** Django's test runner / pytest-django
+- **Deployment:** Railway (Procfile, Gunicorn, WhiteNoise for static files)
 
- 2. **Community:**
-   - Users can access the community chat that is open to the public for anyone that 
-   has a question can ask in the community and can also search if someone has had that problem.
-   - User can comment on others' posts.
-  
- 3. **Health Records**
-   - Add, edit, and delete veterinary visits.
-   - Add, edit, and delete vaccinations.
-   - Show a reminder of when your pet's next vaccination is.
-  
-## **Inspiration** ##
-   - We created PawCare to help people who struggle with staying organized about their pet's information. 
+## **Key features**
 
-## **HOW TO USE (Visual Studio Code)**
-  1. Install Python to your computer.
-  2. Download [Visual Studio Code](https://www.youtube.com/watch?v=HxJXKFxhah4)
-  3. Install the extensions "Python" by Microsoft and "SQLite" by alexcvzz
-  4. Clone this repository
-  5. Open the project
-  6. Install Pillow [pip install pillow]
-  7. Install Widget Tweak [pip install django-widget-tweaks]
-  8. Install Image Field [pip install django-imagefield]
-  9. Make migrations and migrate [python3 manage.py makemigrations] [python3 manage.py migrate]
-  10. Start running the server [python3 manage.py runserver] and you are all set!
+1. **Pet profiles** — name, species, breed, allergies, personality, daily routine, and care instructions, with a photo.
+2. **Vaccination tracking** — log vaccines given and upcoming due dates; overdue ones are flagged.
+3. **Vet visit history** — reason, vet name, notes, and optional follow-up date.
+4. **Medications** — recurring dosing schedules (daily, weekly, as-needed, etc.) with active/inactive status.
+5. **Weight tracking** — log weight over time and view it on a chart.
+6. **Documents** — upload lab results, vet reports, and insurance documents per pet.
+7. **Dashboard reminders** — a single view of everything due or overdue across all of a user's pets.
+8. **Shared access** — pet owners can grant a family member or sitter view-only or edit access to a pet's profile.
+9. **Community board** — public Q&A style posts and comments, searchable by title.
+
+## **Local development**
+
+### Backend (Django API)
+
+```bash
+python -m venv venv
+venv\Scripts\Activate.ps1      # Windows PowerShell; use venv/bin/activate on macOS/Linux
+pip install -r requirements.txt
+cp .env.example .env           # fill in SECRET_KEY, etc.
+python manage.py migrate
+python manage.py runserver
+```
+
+API runs at `http://localhost:8000`. Interactive docs at `http://localhost:8000/api/docs/`.
+
+### Frontend (React)
+
+In a second terminal:
+
+```bash
+cd frontend
+npm install
+cp .env.example .env
+npm run dev
+```
+
+Runs at `http://localhost:5173` and talks to the Django API above.
+
+### Old server-rendered UI
+
+The original Django template views (`/pets/`, `/vaccinations/`, etc.) still work and are served from the same `runserver` process — useful during the transition to the React frontend, but the React app is the primary UI going forward.
